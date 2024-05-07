@@ -8,7 +8,7 @@ Wordle Clone
 
 Clone repository, 'cd' into wordle-clone and install requirements (npm)
 
-'''shell
+```shell
 cd ./wordle-clone
 npm install
-'''
+```
