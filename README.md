@@ -1,12 +1,16 @@
 # cs35l-group26
- 
-Wordle Clone
 
 ## How to edit
 
+### Github Desktop
+
+Brian: I recommend installing Github Desktop.
+
 ### Get code
 
-Clone repository, `cd` into wordle-clone and install requirements (npm needs to be installed)
+Clone repository. You can do this easily through Github Desktop.
+
+`cd` into `wordle-clone` and install requirements (npm needs to be installed)
 
 ```shell
 cd ./wordle-clone
