@@ -2,7 +2,7 @@
  
 Wordle Clone
 
-## How to run
+## How to edit
 
 ### Get code
 
