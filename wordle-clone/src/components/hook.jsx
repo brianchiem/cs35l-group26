@@ -7,12 +7,37 @@ function Hook(solution) {
     const [log, setLog] = useState([])
     const [gameOver, setGameOver] = useState(false)
 
-    function format() {
-        
-    }
+    function handleGuess() {
+        let sol = Array.from(solution)
+        let gue = Array.from(currentGuess).map((i) => {
+            return {letter: i, color: 'gray'}
+        })
+        //console.log(gue)
+        for (let i = 0; i < 5; i++) {
+            if (gue[i].letter == sol[i]) {
+                gue[i].color = 'green'
+            } else if (sol.includes(gue[i].letter)) {
+                gue[i].color = 'yellow'
+            }
+            console.log(gue[i])
+        }
 
-    function addGuess() {
+        let temp1 = guesses
+        temp1.push(gue)
+        setGuesses(temp1)
 
+        if (solution == currentGuess) {
+            setGameOver(!gameOver)
+            return
+        }
+
+        let temp2 = log
+        temp2.push(currentGuess)
+        setLog(temp2)
+
+        let temp3 = turn
+        temp3 = temp3 + 1
+        setTurn(temp3)
     }
 
     function handleInput({ key }) {
@@ -31,7 +56,7 @@ function Hook(solution) {
             if (turn < 5) {
                 if (!log.includes(currentGuess)) {
                     if (currentGuess.length == 5) {
-                        addGuess()
+                        handleGuess()
                     }
                 }
             }
