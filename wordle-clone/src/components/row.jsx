@@ -1,5 +1,5 @@
 import React from "react";
-import './row.css'
+import './styles/row.css'
 
 function Row () {
     return (

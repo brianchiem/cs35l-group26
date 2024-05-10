@@ -1,5 +1,5 @@
 import React from "react";
-import './Navbar.css'
+import './styles/navbar.css'
 import logo from './assets/w.png'
 
 function Navbar() {
@@ -10,7 +10,7 @@ function Navbar() {
                     <img className="logo" src={logo} />
                 </div>
                 <div className="navbar-title">
-                    Wordle Clone (PlaceHolder)
+                    Wordle Clone
                 </div>
                 <div className="nav-buttons">
                     <div className="leaderboards">

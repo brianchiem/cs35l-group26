@@ -1,6 +1,6 @@
 import React from "react";
 import Row from './row.jsx'
-import './grid.css'
+import './styles/grid.css'
 
 function Grid() {
     return (
