@@ -3,7 +3,7 @@ import { useState, useEffect } from "react"
 function Hook(solution) {
     const [turn, setTurn] = useState(0)
     const [currentGuess, setCurrentGuess] = useState('')
-    const [guesses, setGuesses] = useState([])
+    const [guesses, setGuesses] = useState(Array(6).fill(null))
     const [log, setLog] = useState([])
     const [gameOver, setGameOver] = useState(false)
 
@@ -19,17 +19,19 @@ function Hook(solution) {
             } else if (sol.includes(gue[i].letter)) {
                 gue[i].color = 'yellow'
             }
-            console.log(gue[i])
+        }
+
+        return gue
+    }
+
+    function newGuess(guess) {
+        if (currentGuess == solution) {
+            setGameOver(!gameOver)
         }
 
         let temp1 = guesses
-        temp1.push(gue)
+        temp1[turn] = guess
         setGuesses(temp1)
-
-        if (solution == currentGuess) {
-            setGameOver(!gameOver)
-            return
-        }
 
         let temp2 = log
         temp2.push(currentGuess)
@@ -38,6 +40,8 @@ function Hook(solution) {
         let temp3 = turn
         temp3 = temp3 + 1
         setTurn(temp3)
+
+        setCurrentGuess('')
     }
 
     function handleInput({ key }) {
@@ -53,17 +57,17 @@ function Hook(solution) {
             })
         }
         if (key == 'Enter') {
-            if (turn < 5) {
+            if (turn < 6) {
                 if (!log.includes(currentGuess)) {
                     if (currentGuess.length == 5) {
-                        handleGuess()
+                        newGuess(handleGuess())
                     }
                 }
             }
         }
     }
 
-    return {turn, currentGuess, gameOver, handleInput}
+    return {turn, currentGuess, guesses, gameOver, handleInput}
 }
 
 export default Hook

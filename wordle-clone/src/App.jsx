@@ -21,8 +21,7 @@ function App() {
   return (
     <>
       <Navbar />
-      <Grid />
-      <div>Dev Current Solution: {solution}</div>
+      
       <Game solution={solution}/>
     </>
   )
