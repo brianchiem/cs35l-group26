@@ -20,6 +20,7 @@ function Game({ solution }) {
 
     return (
         <>
+            {/* <Win status={gameOver}/> */}
             <Grid currentGuess={currentGuess} guesses={guesses} turn={turn}/>
             <div>Input: {currentGuess}</div>
             <div>Dev Current Solution: {solution}</div>
@@ -27,5 +28,16 @@ function Game({ solution }) {
         </>
     )
 }
+
+// function Win({status}) {
+//     if (status) {
+//         return (
+//             <div className="win-container">
+//                 <div>You Win</div>
+//                 <button>X</button>
+//             </div>
+//         )
+//     }
+// }
 
 export default Game
