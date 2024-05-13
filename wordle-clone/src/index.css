@@ -33,7 +33,7 @@ body {
   position: relative;
 }
 
-.win-container {
+/* .win-container {
   background-color: rgb(0, 0, 0);
   color: white;
   height: 200px;
@@ -47,17 +47,16 @@ body {
   justify-content: center;
 
   animation: appear 0.5s;
-  animation-delay: 10s;
-}
+} */
 
-@keyframes appear {
+/* @keyframes appear {
   0% {
     opacity: 0%;
   }
   100% {
     opacity: 100%;
   }
-}
+} */
 
 /* h1 {
   font-size: 3.2em;
