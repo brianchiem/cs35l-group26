@@ -6,8 +6,10 @@ import Keyboard from "./keyboard.jsx"
 import { useEffect } from "react"
 
 function Game({ solution }) {
+    // importing what Hook returns
     const { turn, currentGuess, guesses, gameOver, handleInput } = Hook(solution)
 
+    // grabs keyboard input, passes it to handleInput
     useEffect(() => {
         window.addEventListener('keyup', handleInput)
 

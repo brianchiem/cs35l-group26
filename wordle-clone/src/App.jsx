@@ -1,7 +1,7 @@
 import Navbar from './components/navbar.jsx'
-import Grid from './components/grid.jsx'
 import Game from './components/game.jsx'
 import { useState, useEffect } from 'react';
+import wordBank from './components/wordbank.jsx';
 
 function App() {
   const [solution, setSolution] = useState(null)
@@ -11,6 +11,7 @@ function App() {
   function getRandomInt(max) {
     return Math.floor(Math.random() * max)
   }
+  const tempWordBank = wordBank()
   
   useEffect(() => {
     setSolution(tempWordBank[getRandomInt(tempWordBank.length)])
@@ -27,8 +28,5 @@ function App() {
   )
 }
 
-const tempWordBank = [
-  'ninja', 'hunch', 'karma', 'manly', 'lorem'
-]
 
 export default App
