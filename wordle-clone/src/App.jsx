@@ -1,4 +1,4 @@
-import Navbar from './components/navbar.jsx'
+import Navbar from './components/Navbar.jsx'
 import Game from './components/Game.jsx'
 import { useState, useEffect } from 'react';
 import WordBank from './components/WordBank.jsx';
