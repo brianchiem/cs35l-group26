@@ -2,6 +2,36 @@ import React from "react";
 import './styles/navbar.css'
 import logo from './assets/w.png'
 
+
+function SocialButton(){
+
+    function SocialInteract(){
+            alert('Interactive component not yet done!')
+    }
+    return(<button onClick={SocialInteract}>
+        social
+        </button>);
+}
+
+function LeaderboardsButton(){
+    function LeadInteract(){
+        alert('You are the best player!')
+}
+return(<button onClick={LeadInteract}>
+    leaderboards
+    </button>);
+}
+
+function HowToPlayButton(){
+    function HowInterac(){
+        alert('Guess a five letter word')
+}
+return(<button onClick={HowInterac}>
+    How to Play
+    </button>);
+}
+
+
 function Navbar() {
     return (
         <>
@@ -14,13 +44,13 @@ function Navbar() {
                 </div>
                 <div className="nav-buttons">
                     <div className="leaderboards">
-                        Leaderboards
+                        <SocialButton  />
                     </div>
                     <div className="social">
-                        Social
+                        <LeaderboardsButton  />
                     </div>
                     <div className="howtoplay">
-                        How to Play
+                        <HowToPlayButton  />
                     </div>
                 </div>
             </div>
