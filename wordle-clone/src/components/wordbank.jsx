@@ -1,5 +1,5 @@
 // for now we will store it locally, will figure out backend later
-function wordBank() {
+function WordBank() {
     return (
       [
         'ninja', 'hunch', 'karma', 'manly', 'lorem'
@@ -7,4 +7,4 @@ function wordBank() {
     )
 }
 
-export default wordBank
+export default WordBank

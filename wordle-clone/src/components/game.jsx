@@ -1,45 +1,19 @@
-import React from "react"
-import Hook from './hook.jsx'
-import Grid from "./grid.jsx"
-import Keyboard from "./keyboard.jsx"
+import Grid from "./Grid"
+import Keyboard from "./Keyboard"
+import Logic from "./Logic"
 
-import { useEffect } from "react"
+function Game(props) {
+    const {turn, currGuess, guesses, gameOver, handleInput} = Logic(props.solution)
 
-function Game({ solution }) {
-    // importing what Hook returns
-    const { turn, currentGuess, guesses, gameOver, handleInput } = Hook(solution)
-
-    // grabs keyboard input, passes it to handleInput
-    useEffect(() => {
-        window.addEventListener('keyup', handleInput)
-
-        return () => window.removeEventListener('keyup', handleInput)
-    }, [handleInput])
-
-    // useEffect(() => {
-    //     console.log(guesses, turn, gameOver)
-    // }, [guesses, turn, gameOver])
+    console.log(turn, currGuess, guesses, gameOver)
 
     return (
-        <>
-            {/* <Win status={gameOver}/> */}
-            <Grid currentGuess={currentGuess} guesses={guesses} turn={turn}/>
-            <div>Input: {currentGuess}</div>
-            <div>Dev Current Solution: {solution}</div>
-            <Keyboard />
-        </>
+        <div>
+            <Grid guesses={guesses} currGuess={currGuess} currTurn={turn}/>
+            <Keyboard handleInput={handleInput}/>
+        </div>
+        
     )
 }
-
-// function Win({status}) {
-//     if (status) {
-//         return (
-//             <div className="win-container">
-//                 <div>You Win</div>
-//                 <button>X</button>
-//             </div>
-//         )
-//     }
-// }
 
 export default Game
