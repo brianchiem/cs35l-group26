@@ -35,11 +35,13 @@ function Logic(solution) {
     const [guesses, setGuesses] = useState(Array(6).fill(null))
     const [log, setLog] = useState([])
     const [gameOver, setGameOver] = useState(false)
+    const [win, setWin] = useState(false)
     const [keyboardState, setKeyboardState] = useState(defaultKeyboard)
 
     function addGuess() {
         if (currGuess == solution) {
             setGameOver(!gameOver)
+            setWin(true)
         }
 
         let sol = Array.from(solution)
@@ -76,7 +78,7 @@ function Logic(solution) {
                     if (guess[i].color == 'yellow' && newKeyboardState[j].color == 'none') {
                         newKeyboardState[j].color = 'ylw'
                     }
-                    if (guess[i].color == 'gray') {
+                    if (guess[i].color == 'gray' && newKeyboardState[j].color == 'none') {
                         newKeyboardState[j].color = 'gry'
                     }
                 }
@@ -115,7 +117,7 @@ function Logic(solution) {
         }
     }
 
-    return {turn, currGuess, guesses, gameOver, keyboardState, handleInput}
+    return {turn, currGuess, guesses, gameOver, win, keyboardState, handleInput, setWin}
 }
 
 export default Logic

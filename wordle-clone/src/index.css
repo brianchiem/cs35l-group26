@@ -20,13 +20,17 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.grid {
+.game {
+  width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   margin-top: 110px;
 }
 
 .row {
   display: flex;
-  margin-left: 42px;
 }
 
 .keyboard {
