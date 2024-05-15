@@ -1,4 +1,5 @@
 import './styles/WinScreen.css'
+import Emojis from './Emoji/Emojis.jsx'
 
 function WinScreen(props) {
     return (props.trigger) ? (
@@ -10,6 +11,7 @@ function WinScreen(props) {
             <button className='close-button' onClick={() => props.setTrigger(false)}>
                 X
             </button>
+            <Emojis guesses={props.guesses}/>
         </div>
     </div>
     ) : (

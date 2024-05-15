@@ -11,7 +11,7 @@ function Game(props) {
         <div className="game">
             <Grid guesses={guesses} currGuess={currGuess} currTurn={turn}/>
             <Keyboard handleInput={handleInput} keyboardState={keyboardState}/>
-            <WinScreen trigger={win} setTrigger={setWin}/>
+            <WinScreen trigger={win} setTrigger={setWin} guesses={guesses}/>
         </div>
         
     )
