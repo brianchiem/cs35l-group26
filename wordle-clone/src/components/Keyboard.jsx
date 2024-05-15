@@ -1,4 +1,5 @@
 import { useEffect } from "react"
+import Key from './Key'
 
 function Keyboard(props) {
 
@@ -16,40 +17,27 @@ function Keyboard(props) {
         return () => window.removeEventListener('keyup', handleKeyboard)
     }, [handleKeyboard])
 
+    const Row1 = props.keyboardState.slice(0, 10)
+    const Row2 = props.keyboardState.slice(10, 19)
+    const Row3 = props.keyboardState.slice(19, 26)
+
     return (
         <div className="keyboard">
             <div className="row1">
-                <button className="onscreen-button" onClick={() => handleClick("Q")}>Q</button>
-                <button className="onscreen-button" onClick={() => handleClick("W")}>W</button>
-                <button className="onscreen-button" onClick={() => handleClick("E")}>E</button>
-                <button className="onscreen-button" onClick={() => handleClick("R")}>R</button>
-                <button className="onscreen-button" onClick={() => handleClick("T")}>T</button>
-                <button className="onscreen-button" onClick={() => handleClick("Y")}>Y</button>
-                <button className="onscreen-button" onClick={() => handleClick("U")}>U</button>
-                <button className="onscreen-button" onClick={() => handleClick("I")}>I</button>
-                <button className="onscreen-button" onClick={() => handleClick("O")}>O</button>
-                <button className="onscreen-button" onClick={() => handleClick("P")}>P</button>
+                {
+                    Row1.map((i, index) => <Key key={index} color={i.color} letter={i.key} handleInput={props.handleInput}/>)
+                }
             </div>
             <div className="row2">
-                <button className="onscreen-button" onClick={() => handleClick("A")}>A</button>
-                <button className="onscreen-button" onClick={() => handleClick("S")}>S</button>
-                <button className="onscreen-button" onClick={() => handleClick("D")}>D</button>
-                <button className="onscreen-button" onClick={() => handleClick("F")}>F</button>
-                <button className="onscreen-button" onClick={() => handleClick("G")}>G</button>
-                <button className="onscreen-button" onClick={() => handleClick("H")}>H</button>
-                <button className="onscreen-button" onClick={() => handleClick("J")}>J</button>
-                <button className="onscreen-button" onClick={() => handleClick("K")}>K</button>
-                <button className="onscreen-button" onClick={() => handleClick("L")}>L</button>
+                {
+                    Row2.map((i, index) => <Key key={index} color={i.color} letter={i.key} handleInput={props.handleInput}/>)
+                }
             </div>
             <div className="row3">
                 <button className="enter-button" onClick={() => handleClick("Enter")}>ENTER</button>
-                <button className="onscreen-button" onClick={() => handleClick("Z")}>Z</button>
-                <button className="onscreen-button" onClick={() => handleClick("X")}>X</button>
-                <button className="onscreen-button" onClick={() => handleClick("C")}>C</button>
-                <button className="onscreen-button" onClick={() => handleClick("V")}>V</button>
-                <button className="onscreen-button" onClick={() => handleClick("B")}>B</button>
-                <button className="onscreen-button" onClick={() => handleClick("N")}>N</button>
-                <button className="onscreen-button" onClick={() => handleClick("M")}>M</button>
+                {
+                    Row3.map((i, index) => <Key key={index} color={i.color} letter={i.key} handleInput={props.handleInput}/>)
+                }
                 <button className="delete-button" onClick={() => handleClick("Backspace")}>DELETE</button>
             </div>
         </div>
