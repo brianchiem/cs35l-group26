@@ -1,5 +1,5 @@
 import React from "react";
-import './styles/navbar.css'
+import './styles/Navbar.css'
 import logo from './assets/w.png'
 
 
@@ -8,27 +8,27 @@ function SocialButton(){
     function SocialInteract(){
             alert('Interactive component not yet done!')
     }
-    return(<button onClick={SocialInteract}>
-        social
-        </button>);
+    return(<a onClick={SocialInteract}>
+        Social
+        </a>);
 }
 
 function LeaderboardsButton(){
     function LeadInteract(){
         alert('You are the best player!')
 }
-return(<button onClick={LeadInteract}>
-    leaderboards
-    </button>);
+return(<a onClick={LeadInteract}>
+    Leaderboards
+    </a>);
 }
 
 function HowToPlayButton(){
-    function HowInterac(){
+    function HowInteract(){
         alert('Guess a five letter word')
 }
-return(<button onClick={HowInterac}>
+return(<a onClick={HowInteract}>
     How to Play
-    </button>);
+    </a>);
 }
 
 
