@@ -1,7 +1,7 @@
-import Grid from "./Grid"
-import Keyboard from "./Keyboard"
-import Logic from "./Logic"
-import WinScreen from "./WinScreen"
+import Grid from "./game-components/Grid"
+import Keyboard from "./game-components/Keyboard"
+import Logic from "./game-components/Logic"
+import WinScreen from "./game-components/WinScreen"
 
 function Game(props) {
     const {turn, currGuess, guesses, gameOver, win, keyboardState, setWin, handleInput} = Logic(props.solution)

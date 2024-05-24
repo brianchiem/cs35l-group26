@@ -1,7 +1,10 @@
-import Navbar from './components/Navbar.jsx';
-import Game from './components/Game.jsx'
+import Navbar from './pages/Navbar.jsx';
+import Game from './pages/Game.jsx'
+import Leaderboards from './pages/Leaderboards.jsx';
+import Social from './pages/Social.jsx';
 import { useState, useEffect } from 'react';
 import WordBank from './components/WordBank.jsx';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   const [solution, setSolution] = useState(null)
@@ -21,9 +24,17 @@ function App() {
 
   return (
     <>
-      <Navbar />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Navbar />}>
+            <Route index element={<Game solution={solution}/>}/>
+            <Route path="Leaderboards" element={<Leaderboards />}/>
+            <Route path='Social' element={<Social />}/>
+          </Route>
+        </Routes>
+      </BrowserRouter>
       
-      <Game solution={solution}/>
+      
     </>
   )
 }
