@@ -16,6 +16,8 @@ Clone repository. You can do this easily through Github Desktop.
 cd ./wordle-clone
 npm install
 ```
+ALSO INSTALL REACT ROUTER: `npm i -D react-router-dom`
+
 ### Temp: Front-end Dev Server
 
 Verify you are in the project directory `wordle-clone`. Run:
