@@ -10,15 +10,27 @@ Brian: I recommend installing Github Desktop.
 
 Clone repository. You can do this easily through Github Desktop.
 
+First, let's setup the front-end:
+
 `cd` into `wordle-clone` and install requirements (npm needs to be installed)
 
 ```shell
 cd ./wordle-clone
 npm install
+npm i -D react-router-dom
 ```
-ALSO INSTALL REACT ROUTER: `npm i -D react-router-dom`
 
-### Temp: Front-end Dev Server
+Next, let's setup the back-end
+
+`cd` into `backend` and install requirements:
+
+```shell
+cd backend
+npm install express
+npm install mongoose validator bcrypt jsonwebtoken
+```
+
+### Running Front-end Server
 
 Verify you are in the project directory `wordle-clone`. Run:
 
@@ -27,3 +39,15 @@ npm run dev
 ```
 
 This will give you a link to a locally hosted server you can access from your browser.
+
+### Back-end
+
+Verify you are in the `backend`. Run:
+
+```shell
+npm run dev
+```
+
+
+
+
