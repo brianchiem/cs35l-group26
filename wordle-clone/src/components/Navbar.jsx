@@ -51,12 +51,17 @@ function Navbar() {
                     <Link className="social" to="/Social">
                         Social
                     </Link>
+                    <Link to="/login">
+                        Login
+                    </Link>
+                    <Link to="/signup">
+                        Signup
+                    </Link>
                     <div className="howtoplay">
                         <HowToPlayButton  />
                     </div>
                 </div>
             </div>
-            <Outlet />
         </>
     )
 }

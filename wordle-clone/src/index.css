@@ -147,6 +147,35 @@ body {
   animation-delay: 1.6s;
 }
 
+
+form.signup, form.login {
+  max-width: 400px;
+  margin: 150px auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 0px 15px rgba(0,0,0,0.3);
+}
+form button {
+  background: green;
+  border: 0;
+  color: #ffffff;
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+input {
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+  background-color: white;
+  color: black;
+}
+
 @keyframes reveal {
   0% {
       transform: rotateX(0);
