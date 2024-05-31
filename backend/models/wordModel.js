@@ -8,3 +8,5 @@ const wordSchema = new Schema({
         required: true
     }
 }, {timestamps: true})
+
+module.exports = mongoose.model('Word', wordSchema)
