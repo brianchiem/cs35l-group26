@@ -51,8 +51,8 @@ function App() {
             <div className='pages'>
               <Routes>
                 <Route path="/" element={user ? <Game solution={solution}/> : <Navigate to="/login"/>}/>
-                <Route path="/Leaderboards" element={<Leaderboards />}/>
-                <Route path='/Social' element={<Social />}/>
+                <Route path="/Leaderboards" element={user ? <Leaderboards /> : <Navigate to="/login"/>}/>
+                <Route path='/Social' element={user ? <Social /> : <Navigate to="/login"/>}/>
                 <Route path="/login" element={!user ? <Login /> : <Navigate to="/"/>}/>
                 <Route path="/signup" element={!user ? <Signup /> : <Navigate to="/"/>}/>
               </Routes>

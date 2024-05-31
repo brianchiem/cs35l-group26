@@ -11,7 +11,8 @@ function Game(props) {
 
     return(
         <div className="game">
-                {memory ? <Grid guesses={memory.guesses} currGuess={currGuess} /> : <Grid guesses={guesses} currGuess={currGuess} currTurn={turn}/>}
+                {/* {memory ? <Grid guesses={memory.guesses}/> : <Grid guesses={guesses} currGuess={currGuess} currTurn={turn}/>} */}
+                <Grid guesses={guesses} currGuess={currGuess} currTurn={turn}/>
                 <Keyboard handleInput={handleInput} keyboardState={keyboardState}/>
                 <WinScreen trigger={win} setTrigger={setWin} guesses={guesses}/>
         </div>
