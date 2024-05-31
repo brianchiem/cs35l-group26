@@ -1,10 +1,13 @@
 import './styles/WinScreen.css'
 import Emojis from './Emoji/Emojis.jsx'
 
+// import { useAuthContext } from '../../hooks/useAuthContext.js'
+
 function WinScreen(props) {
-    if (props.trigger) {
-        localStorage.setItem('win', JSON.stringify({win: true, guesses: props.guesses}))
-    }
+
+    // if (props.trigger) {
+    //     localStorage.setItem('win', JSON.stringify({win: true, guesses: props.guesses}))
+    // }
     return (props.trigger) ? (
     <div className='win-screen-outer'>
         <div className="win-screen-container">

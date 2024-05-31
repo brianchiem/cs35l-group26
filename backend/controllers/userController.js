@@ -1,5 +1,6 @@
 const User = require('../models/userModel')
 const jwt = require('jsonwebtoken')
+const mongoose = require('mongoose')
 
 const createToken = (_id) => {
     return jwt.sign({_id}, 'goated', {expiresIn: '1d'})
@@ -16,7 +17,7 @@ const loginUser = async (req, res) => {
         const token = createToken(user._id)
 
         const {email, username, friends, _id} = user
-        res.status(200).json({email, username, friends, _id, token})
+        res.status(200).json(user)
     } catch (error) {
         res.status(400).json({error: error.message})
     }
@@ -32,7 +33,7 @@ const signupUser = async (req, res) => {
         // create a token
         const token = createToken(user._id)
 
-        res.status(200).json({email, username, token})
+        res.status(200).json(user)
     } catch (error) {
         res.status(400).json({error: error.message})
     }
@@ -43,4 +44,35 @@ const deleteUser = async (req, res) => {
 
 }
 
-module.exports = {loginUser, signupUser, deleteUser}
+// update user
+const updateUser = async (req, res) => {
+    const { id } = req.params
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(404).json({error: 'No such user'})
+    }
+
+    const user = await User.findOneAndUpdate({_id: id}, {
+        ...req.body
+    })
+
+    if (!user) {
+        return res.status(404).json({error: 'No such user'})
+    }
+
+    res.status(200).json(user)
+}
+
+const getUsers = async (req, res) => {
+    const users = await User.find({}).sort({createdAt: -1})
+
+    res.status(200).json(users)
+}
+
+const getUser = async (req, res) => {
+    const { id } = req.params
+    const user = await User.findById(id)
+    res.status(200).json(user)
+}
+
+module.exports = {loginUser, signupUser, deleteUser, updateUser, getUsers, getUser}

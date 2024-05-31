@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useAuthContext } from "../../hooks/useAuthContext";
 
 const defaultKeyboard = [
     {key: 'Q', color: 'none'}, // index 0:
@@ -37,12 +38,31 @@ function Logic(solution) {
     const [gameOver, setGameOver] = useState(false)
     const [win, setWin] = useState(false)
     const [keyboardState, setKeyboardState] = useState(defaultKeyboard)
-    const [memory, setMemory] = useState(JSON.parse(localStorage.getItem('memory')))
 
+    // const {user} = useAuthContext()
+    // const {dispatch} = useAuthContext()
+    // const {streak, _id} = user
+    // //const _id = user._id
+
+    // const handleWin = async() => {
+    //     const response = await fetch('/api/user/' + _id, {
+    //         method: 'PATCH',
+    //         headers: {'Content-Type': 'application/json'},
+    //         body: JSON.stringify({streak: (streak + 1), daily: true})
+    //     })
+    //     const json = await response.json()
+
+    //     if (response.ok) {
+    //         console.log(json)
+    //         dispatch({type: 'UPDATE', payload: json})
+    //         localStorage.setItem('user', JSON.stringify(json))
+    //     }
+    // }
     function addGuess() {
         if (currGuess == solution) {
             setGameOver(!gameOver)
             setWin(true)
+            // handleWin()
         }
 
         let sol = Array.from(solution)

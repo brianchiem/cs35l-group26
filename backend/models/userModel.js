@@ -22,6 +22,12 @@ const userSchema = new Schema({
     friends: {
         type: Array,
         default: []
+    },
+    streak: {
+        type: Number
+    },
+    daily: {
+        type: Boolean
     }
 }, {timestamps: true})
 
