@@ -37,6 +37,7 @@ function Logic(solution) {
     const [gameOver, setGameOver] = useState(false)
     const [win, setWin] = useState(false)
     const [keyboardState, setKeyboardState] = useState(defaultKeyboard)
+    const [memory, setMemory] = useState(JSON.parse(localStorage.getItem('memory')))
 
     function addGuess() {
         if (currGuess == solution) {
