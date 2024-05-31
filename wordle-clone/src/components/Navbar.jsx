@@ -3,6 +3,8 @@ import './styles/Navbar.css'
 import logo from './assets/w.png'
 import { Outlet, Link } from "react-router-dom";
 
+import { useLogout } from "../hooks/useLogout";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 // function SocialButton(){
 
@@ -33,8 +35,13 @@ return(<a onClick={HowInteract}>
     </a>);
 }
 
-
 function Navbar() {
+    const { logout } = useLogout()
+    const { user } = useAuthContext()
+    const handleClick = () => {
+        logout()
+    }
+
     return (
         <>
             <div className="navbar-container">
@@ -44,23 +51,32 @@ function Navbar() {
                 <Link to="/" className="navbar-title">
                     Wordle Clone
                 </Link>
-                <div className="nav-buttons">
-                    <Link className="leaderboards" to="/Leaderboards">
-                        Leaderboards
-                    </Link>
-                    <Link className="social" to="/Social">
-                        Social
-                    </Link>
-                    <Link to="/login">
-                        Login
-                    </Link>
-                    <Link to="/signup">
-                        Signup
-                    </Link>
-                    <div className="howtoplay">
-                        <HowToPlayButton  />
+                {user && (
+                    <div className="nav-buttons">
+                        <Link className="leaderboards" to="/Leaderboards">
+                            Leaderboards
+                        </Link>
+                        <Link className="social" to="/Social">
+                            Social
+                        </Link>
+                        <div className="howtoplay">
+                            <HowToPlayButton />
+                        </div>
+                        <span>{user.username}</span>
+                        <button className="logout" onClick={handleClick}>Log out</button>
                     </div>
-                </div>
+                )}
+                {!user && (
+                    <div className="nav-buttons">
+                        <Link to="/login">
+                            Login
+                        </Link>
+                        <Link to="/signup">
+                            Signup
+                        </Link>
+                    </div>
+                )}
+                
             </div>
         </>
     )

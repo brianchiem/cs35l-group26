@@ -11,10 +11,12 @@ import Signup from './pages/Signup.jsx';
 
 import { useState, useEffect } from 'react';
 import WordBank from './components/WordBank.jsx';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { useAuthContext } from './hooks/useAuthContext.js'
 
 function App() {
   const [solution, setSolution] = useState(null)
+  const { user } = useAuthContext()
 
   // Handle Solution //
 
@@ -48,11 +50,11 @@ function App() {
           <Navbar/>
             <div className='pages'>
               <Routes>
-                <Route path="/" element={<Game solution={solution}/>}/>
+                <Route path="/" element={user ? <Game solution={solution}/> : <Navigate to="/login"/>}/>
                 <Route path="/Leaderboards" element={<Leaderboards />}/>
                 <Route path='/Social' element={<Social />}/>
-                <Route path="/login" element={<Login />}/>
-                <Route path="/signup" element={<Signup />}/>
+                <Route path="/login" element={!user ? <Login /> : <Navigate to="/"/>}/>
+                <Route path="/signup" element={!user ? <Signup /> : <Navigate to="/"/>}/>
               </Routes>
             </div>
         </BrowserRouter>
