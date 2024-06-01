@@ -19,7 +19,24 @@ function App() {
   const [localUser, setLocalUser] = useState(null)
   const { user } = useAuthContext()
   const [word, setWord] = useState(null)
-  const date = "20240601"
+
+  let today = new Date(),
+  year = today.getFullYear().toString(),
+  month = today.getMonth() + 1,
+  day = today.getDate();
+  if (day < 10) {
+    day = "0" + day.toString()
+  }
+  else {
+    day = day.toString()
+  }
+  if (month < 10) {
+    month = "0" + month.toString() 
+  }
+  else {
+    month = month.toString()
+  }
+  const date = year + month + day
 
   // Handle Solution //
 
@@ -70,7 +87,7 @@ function App() {
               <Routes>
                 <Route path="/" element={user ? <Game solution={word}/> : <Navigate to="/login"/>}/>
                 <Route path="/Leaderboards" element={user ? <Leaderboards /> : <Navigate to="/login"/>}/>
-                <Route path='/Social' element={user ? <Social /> : <Navigate to="/login"/>}/>
+                <Route path='/Social' element={user ? <Social solution={word}/> : <Navigate to="/login"/>}/>
                 <Route path="/login" element={!user ? <Login /> : <Navigate to="/"/>}/>
                 <Route path="/signup" element={!user ? <Signup /> : <Navigate to="/"/>}/>
               </Routes>

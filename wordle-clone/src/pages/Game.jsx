@@ -19,7 +19,7 @@ function Game(props) {
             <div className="game">
                 <Grid guesses={memory ? memory.guesses : guesses} currGuess={currGuess} currTurn={6}/>
                 <Keyboard handleInput={handleInput} keyboardState={memory ? memory.keyboardState : keyboardState}/>
-                <Popup trigger={popup} setTrigger={setPopup} guesses={memory ? memory.guesses : guesses} message="You win!"/>
+                <Popup trigger={popup} setTrigger={setPopup} guesses={memory ? memory.guesses : guesses} message={memory ? "You win!": "You already did today's Wordle!"}/>
             </div>
         )
     }

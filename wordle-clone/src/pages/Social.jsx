@@ -3,7 +3,7 @@ import { useAuthContext } from "../hooks/useAuthContext"
 import { useEffect, useState } from "react"
 import Friends from '../components/Friends'
 
-function Social() {
+function Social(props) {
     const {user} = useAuthContext()
     const [users, setUsers] = useState(null)
     const [friends, setFriends] = useState([])
@@ -30,7 +30,7 @@ function Social() {
         <div className="social-1">
             <div className="users">
                 {users && users.map((user) => (
-                    <Friends key={user._id} user={user}/>   
+                    <Friends key={user._id} user={user} solution={props.solution}/>   
                 ))}
             </div>
         </div>
