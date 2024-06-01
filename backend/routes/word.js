@@ -9,7 +9,7 @@ const router = express.Router()
 router.get('/', getWords)
 
 // get a word
-router.get('/:id', getWord)
+router.get('/:date', getWord)
 
 // create a word
 router.post('/', createWord)

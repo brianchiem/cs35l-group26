@@ -3,7 +3,7 @@ import Emojis from './Emoji/Emojis.jsx'
 
 // import { useAuthContext } from '../../hooks/useAuthContext.js'
 
-function WinScreen(props) {
+function Popup(props) {
 
     // if (props.trigger) {
     //     localStorage.setItem('win', JSON.stringify({win: true, guesses: props.guesses}))
@@ -12,7 +12,7 @@ function WinScreen(props) {
     <div className='win-screen-outer'>
         <div className="win-screen-container">
             <div className='win-title'>
-                You Win!
+                {props.message}
             </div>
             <button className='close-button' onClick={() => props.setTrigger(false)}>
                 X
@@ -27,4 +27,4 @@ function WinScreen(props) {
     )
 }
 
-export default WinScreen
+export default Popup

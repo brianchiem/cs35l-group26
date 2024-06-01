@@ -5,6 +5,11 @@ const Schema = mongoose.Schema
 const wordSchema = new Schema({
     word: {
         type: String,
+        required: true,
+        unique: true
+    },
+    date: {
+        type: String,
         required: true
     }
 }, {timestamps: true})

@@ -59,7 +59,25 @@ const updateUser = async (req, res) => {
     if (!user) {
         return res.status(404).json({error: 'No such user'})
     }
+    console.log(user)
+    res.status(200).json(user)
+}
 
+const updateUser2 = async (req, res) => {
+    const { _id } = req.body
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(404).json({error: 'No such user'})
+    }
+
+    const user = await User.findOneAndUpdate({_id}, {
+        $inc: { quantity: 1, "streak": 1 }, daily: true 
+    })
+
+    if (!user) {
+        return res.status(404).json({error: 'No such user'})
+    }
+    console.log(user)
     res.status(200).json(user)
 }
 
@@ -75,4 +93,4 @@ const getUser = async (req, res) => {
     res.status(200).json(user)
 }
 
-module.exports = {loginUser, signupUser, deleteUser, updateUser, getUsers, getUser}
+module.exports = {loginUser, signupUser, deleteUser, updateUser, getUsers, getUser, updateUser2}

@@ -24,10 +24,12 @@ const userSchema = new Schema({
         default: []
     },
     streak: {
-        type: Number
+        type: Number,
+        default: 0
     },
-    daily: {
-        type: Boolean
+    words: {
+        type: Array,
+        default: []
     }
 }, {timestamps: true})
 

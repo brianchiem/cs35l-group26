@@ -39,30 +39,41 @@ function Logic(solution) {
     const [win, setWin] = useState(false)
     const [keyboardState, setKeyboardState] = useState(defaultKeyboard)
 
-    // const {user} = useAuthContext()
-    // const {dispatch} = useAuthContext()
-    // const {streak, _id} = user
-    // //const _id = user._id
+    const {user} = useAuthContext()
+    const {dispatch} = useAuthContext()
+    const {_id, streak} = user
+    //const _id = user._id
+    const winArray = user.words
 
-    // const handleWin = async() => {
-    //     const response = await fetch('/api/user/' + _id, {
-    //         method: 'PATCH',
-    //         headers: {'Content-Type': 'application/json'},
-    //         body: JSON.stringify({streak: (streak + 1), daily: true})
-    //     })
-    //     const json = await response.json()
+    const handleWin = async() => {
+        winArray.push(solution)
+        const response = await fetch('/api/user/' + _id, {
+            method: 'PATCH',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({words: winArray, streak: streak + 1})
+        })
+        const json = await response.json()
 
-    //     if (response.ok) {
-    //         console.log(json)
-    //         dispatch({type: 'UPDATE', payload: json})
-    //         localStorage.setItem('user', JSON.stringify(json))
-    //     }
-    // }
+        const response1 = await fetch('/api/user/' + _id, {
+            method: 'GET'
+        })
+
+        const json1 = await response1.json()
+
+        if (response) {
+            console.log('here')
+            console.log(json)
+            console.log(json1)
+            dispatch({type: 'UPDATE', payload: json1})
+            localStorage.setItem('user', JSON.stringify(json1))
+            localStorage.setItem('win', JSON.stringify({guesses: guesses, keyboardState: keyboardState}))
+        }
+    }
     function addGuess() {
         if (currGuess == solution) {
             setGameOver(!gameOver)
             setWin(true)
-            // handleWin()
+            handleWin()
         }
 
         let sol = Array.from(solution)

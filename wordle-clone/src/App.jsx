@@ -16,7 +16,10 @@ import { useAuthContext } from './hooks/useAuthContext.js'
 
 function App() {
   const [solution, setSolution] = useState(null)
+  const [localUser, setLocalUser] = useState(null)
   const { user } = useAuthContext()
+  const [word, setWord] = useState(null)
+  const date = "20240601"
 
   // Handle Solution //
 
@@ -28,6 +31,21 @@ function App() {
   useEffect(() => {
     setSolution(tempWordBank[getRandomInt(tempWordBank.length)].toUpperCase())
   }, []);
+
+  useEffect(() => {
+    const fetchWord = async () => {
+        const response = await fetch('/api/word/' + date) 
+        const json = await response.json()
+
+        if (response.ok) {
+          setWord(json.word)
+          console.log(json.word)
+        }
+    }
+
+    fetchWord()
+}, [])
+
 
   // Handle Solution //
 
@@ -50,7 +68,7 @@ function App() {
           <Navbar/>
             <div className='pages'>
               <Routes>
-                <Route path="/" element={user ? <Game solution={solution}/> : <Navigate to="/login"/>}/>
+                <Route path="/" element={user ? <Game solution={word}/> : <Navigate to="/login"/>}/>
                 <Route path="/Leaderboards" element={user ? <Leaderboards /> : <Navigate to="/login"/>}/>
                 <Route path='/Social' element={user ? <Social /> : <Navigate to="/login"/>}/>
                 <Route path="/login" element={!user ? <Login /> : <Navigate to="/"/>}/>

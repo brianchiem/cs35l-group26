@@ -1,7 +1,7 @@
 const express = require('express')
 
 // controller functions
-const {loginUser, signupUser, deleteUser, updateUser, getUsers, getUser} = require('../controllers/userController')
+const {loginUser, signupUser, deleteUser, updateUser, getUsers, getUser, updateUser2} = require('../controllers/userController')
 
 const router = express.Router()
 
@@ -21,5 +21,7 @@ router.delete('/:id', deleteUser)
 router.patch('/:id', updateUser)
 
 router.get('/:id', getUser)
+
+router.post('/setwin', updateUser2)
 
 module.exports = router
