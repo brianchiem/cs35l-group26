@@ -22,7 +22,7 @@ router.delete('/:id', deleteUser)
 // update route (feature)
 router.patch('/:id', updateUser)
 
-router.get('/:id', getUser)
+//router.get('/:id', getUser)
 
 router.get('/:username', getUser2)
 

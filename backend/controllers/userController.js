@@ -101,6 +101,16 @@ const getUser = async (req, res) => {
 
 const getUser2 = async (req, res) => {
     const {username} = req.params
+
+    if (mongoose.Types.ObjectId.isValid(username)) {
+        const user = await User.findById({_id: username})
+        if (!user) {
+            return res.status(404).json({error: "user not found"})
+        } else {
+            return res.status(200).json(user)
+        }
+    }
+
     const user = await User.find({"username": {"$regex": username, "$options": "i"}})
     if (user.length == 0) {
         res.status(404).json({error: "user not found"})

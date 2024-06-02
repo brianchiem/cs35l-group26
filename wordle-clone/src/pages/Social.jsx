@@ -32,61 +32,66 @@ function Social(props) {
         // console.log()
     }, [])
 
-    // const handleSubmit = async() => {
-    //     //e.preventDefault()
-    //     console.log(searching)
+    const handleSubmit = async() => {
+        //e.preventDefault()
+        console.log(searching)
 
-    //     const json = await search(searching)
+        const json = await search(searching)
 
-    //     if (json) {
-    //         setUsers(json)
-    //     }
-    // }
+        if (json) {
+            setUsers(json)
+        }
+    }
 
-    // const handleSearchChange = (e) => {
-    //     e.preventDefault()
-    //     setSearching(e.target.value)
-    // }
-    // useEffect(() => {
-    //     handleSubmit()
-    // }, [searching])
+    const handleSearchChange = (e) => {
+        e.preventDefault()
+        setSearching(e.target.value)
+    }
+    useEffect(() => {
+        handleSubmit()
+    }, [searching])
 
 
     return (
         <div className="social-1">
-            {/* <form onSubmit={handleSubmit}>
-                <input
-                    // onChange={(e) => setSearching(e.target.value)}
-                    onChange={handleSearchChange}
-                    value={searching}
-                />
-                <button>Search</button>
-                {error && <div className="error">{error}</div>}
-            </form> */}
-            <div className="users">
+            <div className="user-search">
+                <form onSubmit={handleSubmit}>
+                    <input
+                        // onChange={(e) => setSearching(e.target.value)}
+                        onChange={handleSearchChange}
+                        value={searching}
+                    />
+                    <button>Search</button>
+                    {error && <div className="error-search">{error}</div>}
+                </form>
+            </div>
+            <div className="user-master-list">
+                <div className="users">
                 <p>Users</p>
                 {users && users.map((user) => (
                     <Users key={user._id} user={user} solution={props.solution}/>   
                 ))}
-            </div>
-            <div className="users">
+                </div>
+                <div className="users">
                 <p>Doesn't follow you back</p>
                 {users && users.map((user) => (
                     <Following key={user._id} user={user} solution={props.solution}/>   
                 ))}
-            </div>
-            <div className="users">
+                </div>
+                <div className="users">
                 <p>You don't follow them back</p>
                 {users && users.map((user) => (
                     <Followers key={user._id} user={user} solution={props.solution}/>   
                 ))}
-            </div>
-            <div className="users">
+                </div>
+                <div className="users">
                 <p>Friends</p>
                 {users && users.map((user) => (
                     <Friends key={user._id} user={user} solution={props.solution}/>   
                 ))}
+                </div>
             </div>
+            
         </div>
     )
 }
