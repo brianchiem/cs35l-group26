@@ -8,6 +8,10 @@ const wordSchema = new Schema({
         required: true,
         unique: true
     },
+    ystword: {
+        type: String,
+        required: true
+    },
     date: {
         type: String,
         required: true

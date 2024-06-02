@@ -23,6 +23,10 @@ const userSchema = new Schema({
         type: Array,
         default: []
     },
+    followers: {
+        type: Array,
+        default: []
+    },
     streak: {
         type: Number,
         default: 0

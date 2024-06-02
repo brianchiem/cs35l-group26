@@ -1,11 +1,11 @@
 import { useAuthContext } from "../hooks/useAuthContext"
 import pfp from '../uploads/defaultpfp.png'
 
-const Friends = (props) => {
+const Following = (props) => {
     const {user} = useAuthContext()
     return (
         <div className="user-details">
-            {(user.friends.includes(props.user.username) && (props.user.friends.includes(user.username))) ? (
+            {(user.friends.includes(props.user.username) && !(props.user.friends.includes(user.username))) ? (
             <div>
                     <div className="user-container">
                         <div className='user-image-container'>
@@ -23,4 +23,4 @@ const Friends = (props) => {
     )
 }
 
-export default Friends
+export default Following

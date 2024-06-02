@@ -42,6 +42,11 @@
     align-items: center;
 }
 
+.navbar-container .navpfp {
+    width: 30px;
+    margin-left: 10px;
+}
+
 .navbar-container a, span {
     padding-left: 20px;
     cursor: pointer;

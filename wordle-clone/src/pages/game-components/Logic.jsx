@@ -30,7 +30,7 @@ const defaultKeyboard = [
     {key: 'M', color: 'none'}, // index 25
 ]
 
-function Logic(solution) {
+function Logic(solution, ystword) {
     const [turn, setTurn] = useState(0)
     const [currGuess, setCurrGuess] = useState("")
     const [guesses, setGuesses] = useState(Array(6).fill(null))
@@ -43,14 +43,22 @@ function Logic(solution) {
     const {dispatch} = useAuthContext()
     const {_id, streak} = user
     //const _id = user._id
-    const winArray = user.words
+    
 
     const handleWin = async() => {
+        const winArray = user.words
         winArray.push(solution)
+        let updateStreak = streak
+        if (winArray.includes(ystword)) {
+            updateStreak = updateStreak + 1
+        }
+        else {
+            updateStreak = 1
+        }
         const response = await fetch('/api/user/' + _id, {
             method: 'PATCH',
             headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({words: winArray, streak: streak + 1})
+            body: JSON.stringify({words: winArray, streak: updateStreak})
         })
         const json = await response.json()
 

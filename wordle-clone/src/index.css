@@ -234,3 +234,57 @@ input.error {
 
   }
 }
+
+.rank-1 {
+  color: gold;
+}
+.rank-2 {
+  color: silver;
+}
+.rank-3 {
+  color: brown;
+}
+
+.profile {
+  margin-top: 200px;
+}
+.pfp {
+  width: 100px;
+}
+
+
+.leaderboard {
+  margin-top: 125px;
+}
+.user-pfp {
+  width: 50px;
+}
+.user-container {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  margin: 20px 15px;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
+.user-container h4, p {
+  padding: 0px;
+  margin: 0px;
+}
+.user-image-container {
+  margin-right: 30px;
+}
+.user-container span {
+  background-color: rgb(50, 146, 248);
+  border-radius: 5px;
+  color: white;
+  padding: 8px 15px;
+  margin-left: 20px;
+  cursor: pointer;
+}
+.user-info-container {
+  width: 150xpx;
+}
+
+

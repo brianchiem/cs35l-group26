@@ -22,14 +22,14 @@ const getWord = async (req, res) => {
 }
 
 const createWord = async(req, res) => {
-    const {word, date} = req.body
+    const {word, ystword, date} = req.body
 
     // if (word.length() !== 5) {
     //     return res.status(400).json({error: 'invalid word'})
     // }
 
     try {
-        const wordd = await Word.create({word, date})
+        const wordd = await Word.create({word, ystword, date})
         res.status(200).json(wordd)
     } catch (error) {
         res.status(400).json({error: error.message})

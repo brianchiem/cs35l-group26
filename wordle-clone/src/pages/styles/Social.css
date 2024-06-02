@@ -1,3 +1,55 @@
 .social-1 {
-    margin-top: 200px;
+    margin-top: 125px;
+    display: flex;
+    flex-direction: row;
+    /* align-items: center; */
+}
+
+.users {
+    min-width: 200px;
+}
+.user-master-list {
+    display: flex;
+}
+.user-search {
+    max-width: 500px;
+    margin: 20px;
+    margin-bottom: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.user-search form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.user-search input {
+    margin: 5px;
+}
+.users {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 250px;
+}
+.user-list-title {
+    font-weight: bold;
+    font-size: 17px;
+}
+div.error-search {
+    padding: 10px;
+    background: #ffefef;
+    border: 1px solid var(--error);
+    color: var(--error);
+    border-radius: 4px;
+    margin: 20px 0;
+    min-width: 105px;
+    position: absolute;
+    right: -140px
+  }
+
+.user-details {
+
 }

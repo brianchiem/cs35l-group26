@@ -8,7 +8,7 @@ import { useState } from "react"
 
 function Game(props) {
     const {user} = useAuthContext()
-    const {turn, currGuess, guesses, gameOver, win, keyboardState, setWin, handleInput} = Logic(props.solution)
+    const {turn, currGuess, guesses, gameOver, win, keyboardState, setWin, handleInput} = Logic(props.solution, props.ystword)
     const [popup, setPopup] = useState(true)
     //console.log(turn, currGuess, guesses, gameOver)
 

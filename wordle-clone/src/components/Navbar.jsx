@@ -5,6 +5,7 @@ import { Outlet, Link } from "react-router-dom";
 
 import { useLogout } from "../hooks/useLogout";
 import { useAuthContext } from "../hooks/useAuthContext";
+import pfp from '../uploads/defaultpfp.png'
 
 // function SocialButton(){
 
@@ -63,6 +64,7 @@ function Navbar() {
                             <HowToPlayButton />
                         </div>
                         <span>{user.username}</span>
+                        <img className="navpfp" src={pfp}/>
                         <button className="logout" onClick={handleClick}>Log out</button>
                     </div>
                 )}

@@ -87,10 +87,27 @@ const getUsers = async (req, res) => {
     res.status(200).json(users)
 }
 
+const getUsers2 = async (req, res) => {
+    const users = await User.find({}).sort({streak: -1})
+
+    res.status(200).json(users)
+}
+
 const getUser = async (req, res) => {
     const { id } = req.params
     const user = await User.findById(id)
     res.status(200).json(user)
 }
 
-module.exports = {loginUser, signupUser, deleteUser, updateUser, getUsers, getUser, updateUser2}
+const getUser2 = async (req, res) => {
+    const {username} = req.params
+    const user = await User.find({"username": {"$regex": username, "$options": "i"}})
+    if (user.length == 0) {
+        res.status(404).json({error: "user not found"})
+    } else {
+        res.status(200).json(user)
+    }
+}
+
+
+module.exports = {loginUser, signupUser, deleteUser, updateUser, getUsers, getUser, getUser2, updateUser2, getUsers2}

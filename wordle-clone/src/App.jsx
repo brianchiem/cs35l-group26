@@ -6,6 +6,7 @@ import Leaderboards from './pages/Leaderboards.jsx';
 import Social from './pages/Social.jsx';
 import Login from './pages/Login.jsx';
 import Signup from './pages/Signup.jsx';
+import Profile from './pages/Profile.jsx';
 //
 
 
@@ -15,10 +16,11 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useAuthContext } from './hooks/useAuthContext.js'
 
 function App() {
-  const [solution, setSolution] = useState(null)
-  const [localUser, setLocalUser] = useState(null)
+  // const [solution, setSolution] = useState(null)
+  // const [localUser, setLocalUser] = useState(null)
   const { user } = useAuthContext()
   const [word, setWord] = useState(null)
+  const [ystword, setYstWord] = useState(null)
 
   let today = new Date(),
   year = today.getFullYear().toString(),
@@ -36,18 +38,19 @@ function App() {
   else {
     month = month.toString()
   }
-  const date = year + month + day
+  // const date = year + month + day
+  const date = "20240604"
 
   // Handle Solution //
 
-  function getRandomInt(max) {
-    return Math.floor(Math.random() * max)
-  }
-  const tempWordBank = WordBank()
+  // function getRandomInt(max) {
+  //   return Math.floor(Math.random() * max)
+  // }
+  // const tempWordBank = WordBank()
   
-  useEffect(() => {
-    setSolution(tempWordBank[getRandomInt(tempWordBank.length)].toUpperCase())
-  }, []);
+  // useEffect(() => {
+  //   setSolution(tempWordBank[getRandomInt(tempWordBank.length)].toUpperCase())
+  // }, []);
 
   useEffect(() => {
     const fetchWord = async () => {
@@ -56,7 +59,9 @@ function App() {
 
         if (response.ok) {
           setWord(json.word)
-          console.log(json.word)
+          setYstWord(json.ystword)
+          console.log("Today's Word: ", json.word)
+          console.log("Yesterday's Word: ", json.ystword)
         }
     }
 
@@ -85,11 +90,12 @@ function App() {
           <Navbar/>
             <div className='pages'>
               <Routes>
-                <Route path="/" element={user ? <Game solution={word}/> : <Navigate to="/login"/>}/>
+                <Route path="/" element={user ? <Game solution={word} ystword={ystword}/> : <Navigate to="/login"/>}/>
                 <Route path="/Leaderboards" element={user ? <Leaderboards /> : <Navigate to="/login"/>}/>
                 <Route path='/Social' element={user ? <Social solution={word}/> : <Navigate to="/login"/>}/>
                 <Route path="/login" element={!user ? <Login /> : <Navigate to="/"/>}/>
                 <Route path="/signup" element={!user ? <Signup /> : <Navigate to="/"/>}/>
+                <Route path='/Profile' element={user ? <Profile /> : <Navigate to="/login"/>}/>
               </Routes>
             </div>
         </BrowserRouter>
