@@ -43,6 +43,12 @@ const signupUser = async (req, res) => {
 const deleteUser = async (req, res) => {
 
 }
+//Help user
+
+const helpUser = async (req, res) => {
+
+}
+
 
 // update user
 const updateUser = async (req, res) => {
@@ -120,4 +126,4 @@ const getUser2 = async (req, res) => {
 }
 
 
-module.exports = {loginUser, signupUser, deleteUser, updateUser, getUsers, getUser, getUser2, updateUser2, getUsers2}
+module.exports = {loginUser, signupUser, deleteUser, updateUser, getUsers, getUser, getUser2, updateUser2, getUsers2, helpUser}

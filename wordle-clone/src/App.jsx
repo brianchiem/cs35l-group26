@@ -1,4 +1,3 @@
-import Navbar from './components/Navbar.jsx';
 
 // pages
 import Game from './pages/Game.jsx'
@@ -7,17 +6,22 @@ import Social from './pages/Social.jsx';
 import Login from './pages/Login.jsx';
 import Signup from './pages/Signup.jsx';
 import Profile from './pages/Profile.jsx';
+import Howtoplay from './pages/Howtoplay.jsx';
+import NotFoundPage from './pages/NotFoundPage.jsx';
+import ProfilePage from './pages/ProfilePage.jsx';
+import MainTemplate from './pages/MainTemplate/MainTemplate.jsx';
+import HomePage from './pages/HomePage.jsx';
 //
 
 
 import { useState, useEffect } from 'react';
 import WordBank from './components/WordBank.jsx';
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { createBrowserRouter, createRoutesFromElements, RouterProvider, Routes, Route, Navigate } from "react-router-dom";
 import { useAuthContext } from './hooks/useAuthContext.js'
 
+
 function App() {
-  // const [solution, setSolution] = useState(null)
-  // const [localUser, setLocalUser] = useState(null)
+
   const { user } = useAuthContext()
   const [word, setWord] = useState(null)
   const [ystword, setYstWord] = useState(null)
@@ -38,19 +42,11 @@ function App() {
   else {
     month = month.toString()
   }
-  // const date = year + month + day
+
   const date = "20240604"
 
-  // Handle Solution //
 
-  // function getRandomInt(max) {
-  //   return Math.floor(Math.random() * max)
-  // }
-  // const tempWordBank = WordBank()
-  
-  // useEffect(() => {
-  //   setSolution(tempWordBank[getRandomInt(tempWordBank.length)].toUpperCase())
-  // }, []);
+
 
   useEffect(() => {
     const fetchWord = async () => {
@@ -68,42 +64,32 @@ function App() {
     fetchWord()
 }, [])
 
+  
+                const router = createBrowserRouter(
+                  createRoutesFromElements(
+                    <Route path='/' element={<MainTemplate/>}>
+                    <Route index element={ <HomePage/>} />
+                    <Route path='/Game' element={user ? <Game solution={word} ystword={ystword}/> : <Navigate to="/login"/>}/>
+                    <Route path='/Leaderboards' element={user ? <Leaderboards /> : <Navigate to="/login"/>}/>
+                    <Route path='/Social' element={user ? <Social solution={word}/> : <Navigate to="/login"/>}/>
+                    <Route path='/:username' element={user ? <ProfilePage/> : <Navigate to="/login"/>}/>
+                    <Route path="/login" element={!user ? <Login /> : <Navigate to="/Game"/>}/>
+                    <Route path="/signup" element={!user ? <Signup /> : <Navigate to="/Game"/>}/>
+                    <Route path='/Profile' element={user ? <Profile /> : <Navigate to="/login"/>}/>
+                    <Route path='/How-to-Play' element={<Howtoplay/>}/>
+                    <Route path='*' element={<NotFoundPage/>}/>
+                    </Route>
+                  )
+                );
 
-  // Handle Solution //
+        return <RouterProvider router={router}/>;
 
-  return (
-    // <>
-    //   <BrowserRouter>
-    //     <Routes>
-    //       <Route path="/" element={<Navbar />}>
-    //         <Route index element={<Game solution={solution}/>}/>
-    //         <Route path="/Leaderboards" element={<Leaderboards />}/>
-    //         <Route path='/Social' element={<Social />}/>
-    //         <Route path="/login" element={<Login />}/>
-    //         <Route path="/signup" element={<Signup />}/>
-    //       </Route>
-    //     </Routes>
-    //   </BrowserRouter>
+};
+            
 
-      <div className='App'>
-        <BrowserRouter>
-          <Navbar/>
-            <div className='pages'>
-              <Routes>
-                <Route path="/" element={user ? <Game solution={word} ystword={ystword}/> : <Navigate to="/login"/>}/>
-                <Route path="/Leaderboards" element={user ? <Leaderboards /> : <Navigate to="/login"/>}/>
-                <Route path='/Social' element={user ? <Social solution={word}/> : <Navigate to="/login"/>}/>
-                <Route path="/login" element={!user ? <Login /> : <Navigate to="/"/>}/>
-                <Route path="/signup" element={!user ? <Signup /> : <Navigate to="/"/>}/>
-                <Route path='/Profile' element={user ? <Profile /> : <Navigate to="/login"/>}/>
-              </Routes>
-            </div>
-        </BrowserRouter>
-      </div>
-      
-    // </>
-  )
-}
 
 
 export default App
+
+
+ 

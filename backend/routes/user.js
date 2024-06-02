@@ -1,7 +1,7 @@
 const express = require('express')
 
 // controller functions
-const {loginUser, signupUser, deleteUser, updateUser, getUsers, getUser, getUser2, updateUser2, getUsers2} = require('../controllers/userController')
+const {loginUser, signupUser, deleteUser, updateUser, getUsers, getUser, getUser2, updateUser2, getUsers2, helpUser} = require('../controllers/userController')
 
 const router = express.Router()
 
@@ -9,6 +9,10 @@ const router = express.Router()
 router.get('/', getUsers)
 
 router.get('/2', getUsers2)
+
+//Help Route
+router.get('/How-to-Play', helpUser)
+
 
 // login route
 router.post('/login', loginUser)

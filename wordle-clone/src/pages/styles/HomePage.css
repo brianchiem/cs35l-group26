@@ -1,0 +1,19 @@
+.HowtoPlay-Start{
+    background-color: lightgray;
+    padding: -10px;
+    border-radius: 0.8;
+    box-shadow: none;
+    
+
+}
+
+.LinkFont{
+    font-size: 18px;
+    color: blue;
+    padding-top: 10px;
+    border-radius: 0.5rem;
+    margin: auto;
+    align-items: center;
+    font-weight: 700;
+
+}

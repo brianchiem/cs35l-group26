@@ -7,34 +7,7 @@ import { useLogout } from "../hooks/useLogout";
 import { useAuthContext } from "../hooks/useAuthContext";
 import pfp from '../uploads/defaultpfp.png'
 
-// function SocialButton(){
 
-//     function SocialInteract(){
-//             alert('Interactive component not yet done!')
-//     }
-//     return(<a onClick={SocialInteract}>
-//         Social
-//         </a>);
-// }
-
-// function LeaderboardsButton(){
-//     function LeadInteract(){
-//         alert('You are the best player!')
-// }
-// return(
-//     <Link to="/Leaderboards">
-//         Leaderboards
-//     </Link>);
-// }
-
-function HowToPlayButton(){
-    function HowInteract(){
-        alert('Guess a five letter word')
-}
-return(<a onClick={HowInteract}>
-    How to Play
-    </a>);
-}
 
 function Navbar() {
     const { logout } = useLogout()
@@ -60,9 +33,9 @@ function Navbar() {
                         <Link className="social" to="/Social">
                             Social
                         </Link>
-                        <div className="howtoplay">
-                            <HowToPlayButton />
-                        </div>
+                        <Link className="howtoplay" to='/Game' >
+                            Game
+                        </Link>
                         <span>{user.username}</span>
                         <img className="navpfp" src={pfp}/>
                         <button className="logout" onClick={handleClick}>Log out</button>
