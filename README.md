@@ -1,10 +1,6 @@
 # cs35l-group26
 
-## How to edit
-
-### Github Desktop
-
-Brian: I recommend installing Github Desktop.
+## How to run the App
 
 ### Get code
 
