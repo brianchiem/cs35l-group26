@@ -1,0 +1,38 @@
+.background_card {
+    border-radius: 0.75rem;
+    position:relative;
+    padding: 2rem;
+
+
+}
+
+
+
+.button_FAQ {
+    margin-top: 0.5rem;
+    margin-right: 1rem;
+    float: right;
+}
+
+.question_FAQ {
+    padding-top: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+
+.box {
+    background-color: rgb(241, 238, 238);
+    border-bottom: solid;
+    margin-bottom: 1rem;
+}
+
+.icon_dropdown {
+    color: white;
+    text-align: center;
+    font-weight:700;
+}
+
+.answer_FAQ{
+    padding-left: 1rem;  
+    font-size: 14px;
+}

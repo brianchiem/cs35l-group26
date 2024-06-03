@@ -1,0 +1,17 @@
+[
+    {
+        "id": "1",
+        "question":"I keep getting error for password not strong enough, what are the password requirements?",
+        "answer":"Please make a strong password for security purposes. Its requirements are at least one capital letter, one lowercase letter, and one number."
+    },
+    {
+        "id": "2",
+        "question":"How do I change my profile picture?",
+        "answer":"To change your profile picture, please log in and then click your username."
+    },
+    {
+        "id": "3",
+        "question":"I was not able to guess the word for today, can I try again?",
+        "answer":"Unfortunately, once you used your guesses, there are no more tries. Pick your words carefully!"
+    }
+]

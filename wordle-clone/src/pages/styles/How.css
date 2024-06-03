@@ -73,11 +73,13 @@
 }
 
 .how-containstep {
-    background-color:beige;
+    background-color:rgb(247, 247, 239);
+    padding-right: 2rem;
 }
 
 .how-stepindent {
     padding-left: 3rem;
+    font-size: 14px;
 }
 
 
@@ -103,4 +105,15 @@
     justify-content: center;
     display: flex;
     border-style:solid;
+}
+
+
+
+.FAQ_container {
+    margin: auto;
+    width: 80%;
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 0rem;
+
 }
