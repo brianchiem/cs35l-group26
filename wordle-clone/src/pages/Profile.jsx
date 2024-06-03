@@ -1,6 +1,8 @@
 import { useState } from "react"
 import pfp from '../uploads/defaultpfp.png'
 import { useAuthContext } from "../hooks/useAuthContext"
+import { Link }from 'react-router-dom'
+import "./styles/HomePage.css"
 
 const Profile = () => {
     const {user} = useAuthContext()
@@ -49,6 +51,14 @@ const Profile = () => {
             <div className="profile-details">
                 <div className="profile-username">{user.username}</div>
                 <p>Your current streak: {user.streak}</p>
+                    <div className='helpin-profile' >
+                    <span className="material-symbols-outlined">
+                        help
+                    </span>
+                    <Link className='LinkFont' to='/How-to-Play'> 
+                        Help
+                    </Link>
+                    </div>
             </div>
         </div>
     )

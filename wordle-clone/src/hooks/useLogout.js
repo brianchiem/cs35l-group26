@@ -1,4 +1,5 @@
 import { useAuthContext } from "./useAuthContext"
+import {toast} from 'react-toastify';
 // import { useWorkoutsContext } from "./useWorkoutsContext"
 
 export const useLogout = () => {
@@ -12,7 +13,9 @@ export const useLogout = () => {
 
         // dispatch logout
         dispatch({type: 'LOGOUT'})
+        toast.success("Succesfully logged out")
         // workoutsDispatch({type: 'SET_WORKOUTS', payload: null})
+
     }
 
     return {logout}

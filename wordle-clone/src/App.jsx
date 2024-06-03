@@ -11,6 +11,7 @@ import NotFoundPage from './pages/NotFoundPage.jsx';
 import ProfilePage from './pages/ProfilePage.jsx';
 import MainTemplate from './pages/MainTemplate/MainTemplate.jsx';
 import HomePage from './pages/HomePage.jsx';
+import FAQ from './pages/FAQ.jsx';
 //
 
 
@@ -85,6 +86,7 @@ function App() {
                     <Route path="/signup" element={!user ? <Signup /> : <Navigate to="/Game"/>}/>
                     <Route path='/Profile' element={user ? <Profile /> : <Navigate to="/"/>}/>
                     <Route path='/How-to-Play' element={<Howtoplay/>}/>
+                    <Route path='/FAQ' element={<FAQ/>}/>
                     <Route path='*' element={<NotFoundPage/>}/>
                     </Route>
                   )

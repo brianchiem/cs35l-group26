@@ -30,7 +30,7 @@ export const useSignup = () => {
             // update the auth context
             dispatch({type: 'LOGIN', payload: json})
 
-            toast.success("User Created Succesfully")
+            toast.success("User created succesfully")
 
             setIsLoading(false)
         }
