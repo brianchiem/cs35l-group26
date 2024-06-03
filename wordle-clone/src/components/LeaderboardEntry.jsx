@@ -7,7 +7,7 @@ const LeaderboardEntry = (props) => {
         <div className={name}>
             <div className="user-container">
                 <div className='user-image-container'>
-                    <img className="user-pfp" src={pfp}/>
+                    <img className="user-pfp" src={!props.user.profilepicture ? 'http://localhost:4000/images/defaultpfp.png' : 'http://localhost:4000/images/' + props.user.profilepicture}/>
                 </div>
                 <div className='user-info-container'>
                     <h4>{props.user.username}</h4>

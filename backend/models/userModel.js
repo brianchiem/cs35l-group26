@@ -34,6 +34,10 @@ const userSchema = new Schema({
     words: {
         type: Array,
         default: []
+    },
+    profilepicture: {
+        type: String,
+        default: "defaultpfp.png"
     }
 }, {timestamps: true})
 

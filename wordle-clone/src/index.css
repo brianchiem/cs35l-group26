@@ -258,6 +258,7 @@ input.error {
 }
 .user-pfp {
   width: 50px;
+  border-radius: 25px;
 }
 .user-container {
   display: flex;
@@ -284,7 +285,7 @@ input.error {
   cursor: pointer;
 }
 .user-info-container {
-  width: 150xpx;
+  width: 150px;
 }
 
 

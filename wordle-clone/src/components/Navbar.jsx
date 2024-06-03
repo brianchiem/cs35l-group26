@@ -39,13 +39,13 @@ function Navbar() {
                         <Link className="social" to="/Social">
                             Social
                         </Link>
-                        <Link className="howtoplay" to='/Game' >
+                        {/* <Link className="howtoplay" to='/Game' >
                             Game
+                        </Link> */}
+                        <Link className="navpfp" to={`/Profile`} >
+                            <img src={!user.profilepicture ? 'http://localhost:4000/images/defaultpfp.png' : 'http://localhost:4000/images/' + user.profilepicture}/>
+                            <div>{user.username}</div>
                         </Link>
-                        <Link className="username" to={`/${user.username}`} >
-                            {user.username}
-                        </Link>
-                        <img className="navpfp" src={pfp}/>
                         <button className="logout" onClick={handleClick}>Log out</button>
                     </div>
                     </>

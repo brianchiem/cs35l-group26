@@ -3,16 +3,17 @@ const mongoose = require('mongoose')
 const userRoutes = require('./routes/user')
 const wordRoutes = require('./routes/word')
 
-// const multer = require('multer')
-// const storage = multer.diskStorage({
-//     destination: function (req, file, cb) {
-//         cb(null, '../wordle-clone/src/uploads/')
-//     },
-//     filename: function (req, file, cb) {
-//         cb(null, file.originalname)
-//     }
-// })
-// const upload = multer({storage})
+const multer = require('multer')
+const path = require('path')
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'public/images/')
+    },
+    filename: function (req, file, cb) {
+        cb(null, file.fieldname + "-" + Date.now() + path.extname(file.originalname))
+    }
+})
+const upload = multer({storage})
 
 // express app
 const app = express()
@@ -20,6 +21,7 @@ const app = express()
 
 // middleware
 app.use(express.json())
+app.use(express.static('public'))
 
 app.use((req, res, next) => {
     console.log(req.path, req.method)
@@ -27,9 +29,9 @@ app.use((req, res, next) => {
 })
 
 // routes
-// app.post('/api/upload', upload.single('file'), function(req, res) {
-//     res.json(req.file)
-// })
+app.post('/api/upload', upload.single('file'), function(req, res) {
+    res.json(req.file)
+})
 
 app.use('/api/user', userRoutes)
 app.use('/api/word', wordRoutes)

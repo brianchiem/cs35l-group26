@@ -15,7 +15,7 @@ const HomePage = () => {
         </div>
         <div className='LinkFont'>
             <Link to='/How-to-Play'> 
-                Learn How to Play
+                Learn How to Play 
             </Link>
         </div>
 
