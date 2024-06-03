@@ -72,7 +72,7 @@ function App() {
                     <Route path='/Game' element={user ? <Game solution={word} ystword={ystword}/> : <Navigate to="/login"/>}/>
                     <Route path='/Leaderboards' element={user ? <Leaderboards /> : <Navigate to="/login"/>}/>
                     <Route path='/Social' element={user ? <Social solution={word}/> : <Navigate to="/login"/>}/>
-                    <Route path='/:username' element={user ? <ProfilePage/> : <Navigate to="/login"/>}/>
+                    <Route path='/:username' element={user ? <ProfilePage solution={word}/> : <Navigate to="/login"/>}/>
                     <Route path="/login" element={!user ? <Login /> : <Navigate to="/Game"/>}/>
                     <Route path="/signup" element={!user ? <Signup /> : <Navigate to="/Game"/>}/>
                     <Route path='/Profile' element={user ? <Profile /> : <Navigate to="/login"/>}/>

@@ -36,7 +36,9 @@ function Navbar() {
                         <Link className="howtoplay" to='/Game' >
                             Game
                         </Link>
-                        <span>{user.username}</span>
+                        <Link className="username" to={`/${user.username}`} >
+                            {user.username}
+                        </Link>
                         <img className="navpfp" src={pfp}/>
                         <button className="logout" onClick={handleClick}>Log out</button>
                     </div>
