@@ -20,12 +20,18 @@ function Navbar() {
         <>
             <div className="navbar-container">
                 <div className="logo-container">
-                    <img className="logo" src={logo} />
+                    <Link to="/">
+                        <img className="logo" src={logo} />
+                    </Link>
                 </div>
                 <Link to="/" className="navbar-title">
                     Wordle Clone
                 </Link>
                 {user && (
+                    <>
+                    <Link to="/Game" className="navbar-title">
+                    Wordle Clone
+                    </Link>
                     <div className="nav-buttons">
                         <Link className="leaderboards" to="/Leaderboards">
                             Leaderboards
@@ -42,8 +48,13 @@ function Navbar() {
                         <img className="navpfp" src={pfp}/>
                         <button className="logout" onClick={handleClick}>Log out</button>
                     </div>
+                    </>
                 )}
                 {!user && (
+                    <>
+                    <Link to="/" className="navbar-title">
+                    Wordle Clone
+                    </Link>
                     <div className="nav-buttons">
                         <Link to="/login">
                             Login
@@ -52,6 +63,7 @@ function Navbar() {
                             Signup
                         </Link>
                     </div>
+                    </>
                 )}
                 
             </div>
