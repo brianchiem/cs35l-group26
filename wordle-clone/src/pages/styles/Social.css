@@ -3,6 +3,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
+    position: absolute;
+    width: 100%;
+    left: 0;
 }
 
 .users {
@@ -10,6 +14,9 @@
 }
 .user-master-list {
     display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
 }
 .user-search {
     max-width: 500px;

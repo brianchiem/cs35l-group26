@@ -13,7 +13,7 @@ const Following = (props) => {
                         </div>
                         <div className='user-info-container'>
                             <h4>{props.user.username}</h4>
-                            <div>{props.user.words.includes(props.solution) ? <p>Daily: Completed</p> : <p>Daily: Not Yet</p>}</div>
+                            <div>{(props.user.words.includes(props.solution) || props.user.miss.includes(props.solution)) ? <p>Daily: Completed</p> : <p>Daily: Not Yet</p>}</div>
                             <p>Current Streak: {props.user.streak}</p>
                         </div>
                     </div>

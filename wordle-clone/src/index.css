@@ -427,5 +427,10 @@ input.error {
   font-size: 16px;
   border-radius: 20px;
   padding: 5px 15px;
+  transition: all 0.15s;
+}
+.upload:hover {
+  color: white;
+  background-color: green;
 }
 

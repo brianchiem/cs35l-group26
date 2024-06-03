@@ -75,17 +75,42 @@ function Logic(solution, ystword) {
             console.log(json1)
             dispatch({type: 'UPDATE', payload: json1})
             localStorage.setItem('user', JSON.stringify(json1))
-            localStorage.setItem('win', JSON.stringify({guesses: guesses, keyboardState: keyboardState}))
+            localStorage.setItem('win', JSON.stringify({guesses: guesses, keyboardState: keyboardState, type: 'win'}))
         }
     }
+
+    const handleLose = async() => {
+        const loseArray = user.miss
+        loseArray.push(solution)
+        
+        const response = await fetch('/api/user/' + _id, {
+            method: 'PATCH',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({miss: loseArray})
+        })
+        const json = await response.json()
+
+        const response1 = await fetch('/api/user/' + _id, {
+            method: 'GET'
+        })
+
+        const json1 = await response1.json()
+
+        if (response) {
+            console.log('here')
+            console.log(json)
+            console.log(json1)
+            dispatch({type: 'UPDATE', payload: json1})
+            localStorage.setItem('user', JSON.stringify(json1))
+            localStorage.setItem('win', JSON.stringify({guesses: guesses, keyboardState: keyboardState, type: 'lost'}))
+        }
+    }
+
     function addGuess() {
         if (currGuess == solution) {
             setGameOver(!gameOver)
             setWin(true)
             handleWin()
-        }
-        if (turn == 6) {
-            setLose(true)
         }
 
         let sol = Array.from(solution)
@@ -109,6 +134,10 @@ function Logic(solution, ystword) {
         g[turn] = guess
         setGuesses(g)
         // console.log(guesses)
+        if (turn == 5 && !win) {
+            setLose(true)
+            handleLose()
+        }
     }
 
     function updateKeyboardState(guess) {

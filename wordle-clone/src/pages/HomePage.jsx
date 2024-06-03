@@ -29,7 +29,7 @@ const HomePage = () => {
                 </Link>
               </div>
               <div className='help-home'>
-              <span class="material-symbols-outlined">
+              <span className="material-symbols-outlined">
                 help
               </span>
               <Link className='LinkFont' to='/How-to-Play'> 

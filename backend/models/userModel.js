@@ -35,6 +35,10 @@ const userSchema = new Schema({
         type: Array,
         default: []
     },
+    miss: {
+        type: Array,
+        default: []
+    },
     profilepicture: {
         type: String,
         default: "defaultpfp.png"
