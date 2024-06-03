@@ -1,5 +1,7 @@
 # cs35l-group26
 
+### Built with the MERN stack, MongoDB Express.js React Node.js
+
 ## How to run the App
 
 ### Get code
