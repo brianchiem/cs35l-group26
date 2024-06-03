@@ -12,10 +12,14 @@ First, let's setup the front-end:
 
 `cd` into `wordle-clone` and install requirements (npm needs to be installed)
 
+You will also need to install some packages that are used in our webstite
+
 ```shell
 cd ./wordle-clone
 npm install
 npm i -D react-router-dom
+npm install --save react-toastify
+npm install react-icons --save
 ```
 
 Next, let's setup the back-end

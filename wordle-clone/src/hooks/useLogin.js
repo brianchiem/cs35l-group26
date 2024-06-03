@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useAuthContext } from "./useAuthContext";
+import {toast} from 'react-toastify';
 
 export const useLogin = () => {
     const[error, setError] = useState(null)
@@ -29,6 +30,7 @@ export const useLogin = () => {
             // update the auth context
             dispatch({type: 'LOGIN', payload: json})
 
+            toast.success("Login Sucessfull")
             setIsLoading(false)
         }
     }
