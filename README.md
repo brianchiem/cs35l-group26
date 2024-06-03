@@ -44,6 +44,9 @@ Verify you are in the `backend`. Run:
 npm run dev
 ```
 
+## Notes
+The backend database is hosted on MongoDB. Currently just for this project, it is still connected within this code. Will replace with environment variables later.
+
 
 
 
