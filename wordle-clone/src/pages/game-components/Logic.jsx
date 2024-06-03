@@ -37,6 +37,7 @@ function Logic(solution, ystword) {
     const [log, setLog] = useState([])
     const [gameOver, setGameOver] = useState(false)
     const [win, setWin] = useState(false)
+    const [lose, setLose] = useState(false)
     const [keyboardState, setKeyboardState] = useState(defaultKeyboard)
 
     const {user} = useAuthContext()
@@ -82,6 +83,9 @@ function Logic(solution, ystword) {
             setGameOver(!gameOver)
             setWin(true)
             handleWin()
+        }
+        if (turn == 6) {
+            setLose(true)
         }
 
         let sol = Array.from(solution)
@@ -157,7 +161,7 @@ function Logic(solution, ystword) {
         }
     }
 
-    return {turn, currGuess, guesses, gameOver, win, keyboardState, handleInput, setWin}
+    return {turn, currGuess, guesses, gameOver, win, lose, keyboardState, handleInput, setWin, setLose}
 }
 
 export default Logic

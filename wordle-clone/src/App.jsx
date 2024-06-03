@@ -43,7 +43,15 @@ function App() {
     month = month.toString()
   }
 
-  const date = "20240604"
+  // SETTING THE DATE \\
+  // 1. This currently is grabbing the current day in order to grab today's word. Default settings for normal operation
+  const date = year + month + day
+
+  // 2. This is for testing purposes. Uncomment and comment the other, currently there are words in the database from "20240602" - "20240630". 
+  // Change the last 2 digits to change the day.
+  // const date = "20240604"
+
+  // Planning to spoof the date, so it changes every 5 minutes for presentation purposes
 
 
 
@@ -68,14 +76,14 @@ function App() {
                 const router = createBrowserRouter(
                   createRoutesFromElements(
                     <Route path='/' element={<MainTemplate/>}>
-                    <Route index element={ <HomePage/>} />
-                    <Route path='/Game' element={user ? <Game solution={word} ystword={ystword}/> : <Navigate to="/login"/>}/>
-                    <Route path='/Leaderboards' element={user ? <Leaderboards /> : <Navigate to="/login"/>}/>
-                    <Route path='/Social' element={user ? <Social solution={word}/> : <Navigate to="/login"/>}/>
+                    <Route index element={!user ? <HomePage /> : <Navigate to="/login"/>} />
+                    <Route path='/Game' element={user ? <Game solution={word} ystword={ystword}/> : <Navigate to="/"/>}/>
+                    <Route path='/Leaderboards' element={user ? <Leaderboards /> : <Navigate to="/"/>}/>
+                    <Route path='/Social' element={user ? <Social solution={word}/> : <Navigate to="/"/>}/>
                     {/* <Route path='/:username' element={user ? <ProfilePage solution={word}/> : <Navigate to="/login"/>}/> */}
                     <Route path="/login" element={!user ? <Login /> : <Navigate to="/Game"/>}/>
                     <Route path="/signup" element={!user ? <Signup /> : <Navigate to="/Game"/>}/>
-                    <Route path='/Profile' element={user ? <Profile /> : <Navigate to="/login"/>}/>
+                    <Route path='/Profile' element={user ? <Profile /> : <Navigate to="/"/>}/>
                     <Route path='/How-to-Play' element={<Howtoplay/>}/>
                     <Route path='*' element={<NotFoundPage/>}/>
                     </Route>

@@ -21,16 +21,40 @@ function Navbar() {
             <div className="navbar-container">
                 <div className="logo-container">
                     <Link to="/">
-                        <img className="logo" src={logo} />
+                        <div className="logo">W</div>
                     </Link>
                 </div>
                 <Link to="/" className="navbar-title">
-                    Wordle Clone
+                <div className="logo-remake-container">
+                            <div className="logo-remake">
+                                <div>W</div>
+                                <div>O</div>
+                                <div>R</div>
+                                <div>D</div>
+                                <div>L</div>
+                                <div>E</div>
+                            </div>
+                            <div className="logo-remake-clone">
+                                CLONE
+                            </div>
+                        </div>
                 </Link>
                 {user && (
                     <>
                     <Link to="/Game" className="navbar-title">
-                    Wordle Clone
+                    <div className="logo-remake-container">
+                            <div className="logo-remake">
+                                <div>W</div>
+                                <div>O</div>
+                                <div>R</div>
+                                <div>D</div>
+                                <div>L</div>
+                                <div>E</div>
+                            </div>
+                            <div className="logo-remake-clone">
+                                CLONE
+                            </div>
+                        </div>
                     </Link>
                     <div className="nav-buttons">
                         <Link className="leaderboards" to="/Leaderboards">
@@ -53,7 +77,19 @@ function Navbar() {
                 {!user && (
                     <>
                     <Link to="/" className="navbar-title">
-                    Wordle Clone
+                        <div className="logo-remake-container">
+                            <div className="logo-remake">
+                                <div>W</div>
+                                <div>O</div>
+                                <div>R</div>
+                                <div>D</div>
+                                <div>L</div>
+                                <div>E</div>
+                            </div>
+                            <div className="logo-remake-clone">
+                                CLONE
+                            </div>
+                        </div>
                     </Link>
                     <div className="nav-buttons">
                         <Link to="/login">

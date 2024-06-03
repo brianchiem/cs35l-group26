@@ -28,8 +28,8 @@
 
 .win-title {
     font-weight: bold;
-    font-size: 30px;
-    margin-top: 20px;
+    font-size: 25px;
+    margin-top: 30px;
 }
 
 .invisible {
@@ -38,9 +38,9 @@
 
 .close-button {
     position: absolute;
-    top: 2px;
-    right: 4px;
-    background-color: rgb(255, 255, 255);
+    top: 6px;
+    right: 1px;
+    background-color: white;
     border: none;
     color: black;
     cursor: pointer;

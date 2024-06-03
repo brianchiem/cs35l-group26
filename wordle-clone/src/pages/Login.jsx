@@ -19,12 +19,14 @@ const Login = () => {
             <input 
                 onChange={(e) => setIdentifier(e.target.value)}
                 value={identifier}
+                placeholder="Email or Username"
             />
             <label>Password:</label>
             <input 
                 type="password" 
                 onChange={(e) => setPassword(e.target.value)}
                 value={password}
+                placeholder="Password"
             />
             <button disabled={isLoading}>Log in</button>
             {error && <div className="error">{error}</div>}

@@ -60,6 +60,7 @@ function Social(props) {
                         // onChange={(e) => setSearching(e.target.value)}
                         onChange={handleSearchChange}
                         value={searching}
+                        placeholder="Username"
                     />
                     <button>Search</button>
                     {error && <div className="error-search">{error}</div>}
@@ -67,25 +68,25 @@ function Social(props) {
             </div>
             <div className="user-master-list">
                 <div className="users">
-                <p>Users</p>
+                <p className="category">Users</p>
                 {users && users.map((user) => (
                     <Users key={user._id} user={user} solution={props.solution}/>   
                 ))}
                 </div>
                 <div className="users">
-                <p>Doesn't follow you back</p>
+                <p className="category">Doesn't follow you back</p>
                 {users && users.map((user) => (
                     <Following key={user._id} user={user} solution={props.solution}/>   
                 ))}
                 </div>
                 <div className="users">
-                <p>You don't follow them back</p>
+                <p className="category">You don't follow them back</p>
                 {users && users.map((user) => (
                     <Followers key={user._id} user={user} solution={props.solution}/>   
                 ))}
                 </div>
                 <div className="users">
-                <p>Friends</p>
+                <p className="category">Friends</p>
                 {users && users.map((user) => (
                     <Friends key={user._id} user={user} solution={props.solution}/>   
                 ))}

@@ -40,10 +40,16 @@ const Profile = () => {
         }
     }
     return (
-        <div className="profile">
-            <input type="file" onChange={(e) => setFile(e.target.files[0])}/>
-            <button type="button" onClick={upload}>Upload</button>
-            <img className="pfp" src={!user.profilepicture ? 'http://localhost:4000/images/defaultpfp.png' : 'http://localhost:4000/images/' + user.profilepicture}/>
+        <div className="profile-container">
+            <div className="image-column">
+                <img className="pfp" src={!user.profilepicture ? 'http://localhost:4000/images/defaultpfp.png' : 'http://localhost:4000/images/' + user.profilepicture}/>
+                <input type="file" onChange={(e) => setFile(e.target.files[0])}/>
+                <button className="upload" type="button" onClick={upload}>Upload</button>
+            </div>
+            <div className="profile-details">
+                <div className="profile-username">{user.username}</div>
+                <p>Your current streak: {user.streak}</p>
+            </div>
         </div>
     )
 

@@ -8,7 +8,7 @@ import { useState } from "react"
 
 function Game(props) {
     const {user} = useAuthContext()
-    const {turn, currGuess, guesses, gameOver, win, keyboardState, setWin, handleInput} = Logic(props.solution, props.ystword)
+    const {turn, currGuess, guesses, gameOver, win, lose, keyboardState, setWin, handleInput, setLose} = Logic(props.solution, props.ystword)
     const [popup, setPopup] = useState(true)
     //console.log(turn, currGuess, guesses, gameOver)
 
@@ -30,6 +30,7 @@ function Game(props) {
                 <Grid guesses={guesses} currGuess={currGuess} currTurn={turn}/>
                 <Keyboard handleInput={handleInput} keyboardState={keyboardState}/>
                 <Popup trigger={win} setTrigger={setWin} guesses={guesses} message="You win!"/>
+                <Popup trigger={lose} setTrigger={setLose} guesses={guesses} message="You Lost!"/>
         </div>
     )
 }

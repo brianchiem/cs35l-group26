@@ -14,7 +14,8 @@ const wordSchema = new Schema({
     },
     date: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     }
 }, {timestamps: true})
 

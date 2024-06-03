@@ -15,7 +15,9 @@ function Popup(props) {
                 {props.message}
             </div>
             <button className='close-button' onClick={() => props.setTrigger(false)}>
-                X
+                <span class="material-symbols-outlined">
+                    close
+                </span>
             </button>
             <Emojis guesses={props.guesses}/>
         </div>
