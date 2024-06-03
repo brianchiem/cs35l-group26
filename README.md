@@ -27,7 +27,7 @@ Next, let's setup the back-end
 ```shell
 cd backend
 npm install express
-npm install mongoose validator bcrypt jsonwebtoken
+npm install mongoose validator bcrypt jsonwebtoken multer
 ```
 
 ### Running Front-end Server
