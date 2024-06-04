@@ -6,7 +6,7 @@ import {useState} from 'react';
 import { useLogout } from "../hooks/useLogout";
 import { useAuthContext } from "../hooks/useAuthContext";
 import pfp from '../uploads/defaultpfp.png'
-import { BiGridSmall } from "react-icons/bi";
+import { FiMenu } from "react-icons/fi";
 
 
 
@@ -82,7 +82,7 @@ function Navbar() {
             
             
             <button className="align-dot" onClick={() => setNavBarShow((prevState) => !prevState)}>
-                <BiGridSmall className="Grid-class"/>
+                <FiMenu className="Grid-class"/>
             </button>
 
             { NavBarShow && (   
