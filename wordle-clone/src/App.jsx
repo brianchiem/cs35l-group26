@@ -19,6 +19,7 @@ import { useState, useEffect } from 'react';
 import WordBank from './components/WordBank.jsx';
 import { createBrowserRouter, createRoutesFromElements, RouterProvider, Routes, Route, Navigate } from "react-router-dom";
 import { useAuthContext } from './hooks/useAuthContext.js'
+import useDate from './hooks/useDate.js';
 
 
 function App() {
@@ -27,34 +28,12 @@ function App() {
   const [word, setWord] = useState(null)
   const [ystword, setYstWord] = useState(null)
 
-  let today = new Date(),
-  year = today.getFullYear().toString(),
-  month = today.getMonth() + 1,
-  day = today.getDate();
-  if (day < 10) {
-    day = "0" + day.toString()
-  }
-  else {
-    day = day.toString()
-  }
-  if (month < 10) {
-    month = "0" + month.toString() 
-  }
-  else {
-    month = month.toString()
-  }
-
   // SETTING THE DATE \\
   // 1. This currently is grabbing the current day in order to grab today's word. Default settings for normal operation
-  const date = year + month + day
+  const d = useDate()
+  let date = d.toISOString().slice(0,10).replaceAll('-', '')
 
-  // 2. This is for testing purposes. Uncomment and comment the other, currently there are words in the database from "20240602" - "20240630". 
-  // Change the last 2 digits to change the day.
-  // const date = "20240604"
-
-  // Planning to spoof the date, so it changes every 5 minutes for presentation purposes
-
-
+  // 2. To change the date for testing purposes, see hooks/useDate.js
 
 
   useEffect(() => {

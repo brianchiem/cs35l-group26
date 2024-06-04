@@ -7,6 +7,7 @@ import { useLogout } from "../hooks/useLogout";
 import { useAuthContext } from "../hooks/useAuthContext";
 import pfp from '../uploads/defaultpfp.png'
 import { FiMenu } from "react-icons/fi";
+import useDate from "../hooks/useDate";
 
 
 
@@ -14,6 +15,8 @@ function Navbar() {
     const [NavBarShow, setNavBarShow] = useState(false);
     const { logout } = useLogout()
     const { user } = useAuthContext()
+    let now = useDate()
+    let date = now.toLocaleDateString('en-US', {dateStyle: "long"})
     const handleClick = () => {
         logout()
     }
@@ -81,37 +84,39 @@ function Navbar() {
                 )}
             
             
-            <button className="align-dot" onClick={() => setNavBarShow((prevState) => !prevState)}>
+            <div className={NavBarShow ? "align-dot" : "drop-move"} onClick={() => setNavBarShow((prevState) => !prevState)}>
                 <FiMenu className="Grid-class"/>
-            </button>
+            </div>
 
             { NavBarShow && (   
                 <>                
                  <div className="asidebar-box">
                     {user && (
                         <div className="side-bar-container">
-                             <Link className="navpfp" to={`/Profile`} >
+                        <Link className="navpfp" to={`/Profile`} >
                             <img src={!user.profilepicture ? 'http://localhost:4000/images/defaultpfp.png' : 'http://localhost:4000/images/' + user.profilepicture}/>
                             <div className="font-final1" >{user.username}</div>
                         </Link>
-                        <Link className="font-final1" to="/Leaderboards">
+                        <Link className="dropdown-links" to="/Leaderboards">
                             Leaderboards
                         </Link>
-                        <Link className="font-final1" to="/Social">
+                        <Link className="dropdown-links" to="/Social">
                             Social
                         </Link>
-                        <button className="log_out" onClick={handleClick}>Log out</button>
+                        <div className="log_out" onClick={handleClick}>Log out</div>
+                        <div className="nav-date">{date}</div>
                     </div>
                     )}
 
                     {!user && (
                          <div className="side-bar-container">
-                             <Link className="font-final1" to="/login">
+                             <Link className="dropdown-links" to="/login">
                                  Login
                              </Link>
-                             <Link className="font-final1" to="/signup">
+                             <Link className="dropdown-links" to="/signup">
                                  Signup
                              </Link>
+                             <div className="nav-date">{date}</div>
                              </div>
                     )}
 
