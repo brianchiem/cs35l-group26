@@ -1,14 +1,14 @@
 import { useState } from "react";
 import pfp from '../uploads/defaultpfp.png';
 import { useAuthContext } from "../hooks/useAuthContext";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import "./styles/HomePage.css";
 
 const Profile = () => {
     const { user } = useAuthContext();
     const { dispatch } = useAuthContext();
     const [file, setFile] = useState(null);
-    const [newUsername, setNewUsername] = useState("");
+    const navigate = useNavigate();
 
     const upload = async () => {
         const formData = new FormData();
@@ -36,17 +36,8 @@ const Profile = () => {
         }
     };
 
-    const updateUsername = async () => {
-        const response = await fetch('/api/user/' + user._id, {
-            method: 'PATCH',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ username: newUsername })
-        });
-        const json = await response.json();
-        if (response.ok) {
-            dispatch({ type: 'UPDATE', payload: json });
-            localStorage.setItem('user', JSON.stringify(json));
-        }
+    const navigateToEditUsername = () => {
+        navigate('/edit-username');
     };
 
     return (
@@ -58,13 +49,7 @@ const Profile = () => {
             </div>
             <div className="profile-details">
                 <div className="profile-username">{user.username}</div>
-                <input
-                    type="text"
-                    placeholder="New Username"
-                    value={newUsername}
-                    onChange={(e) => setNewUsername(e.target.value)}
-                />
-                <button className="update-username" type="button" onClick={updateUsername}>Update Username</button>
+                <button className="edit-username" type="button" onClick={navigateToEditUsername}>Edit Username</button>
                 <p>Your current streak: {user.streak}</p>
                 <div className='helpin-profile'>
                     <span className="material-symbols-outlined">
