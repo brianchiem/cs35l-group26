@@ -5,7 +5,7 @@ const Friends = (props) => {
     const {user} = useAuthContext()
     return (
         <div className="user-details">
-            {(user.friends.includes(props.user.username) && (props.user.friends.includes(user.username))) ? (
+            {(user.friends.includes(props.user.email) && (props.user.friends.includes(user.email))) ? (
             <div>
                     <div className="user-container">
                         <div className='user-image-container'>

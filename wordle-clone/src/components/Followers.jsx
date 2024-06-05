@@ -7,10 +7,10 @@ const Followers = (props) => {
 
     const handleClick = async() => {
         const updateFriends = user.friends
-        updateFriends.push(props.user.username)
+        updateFriends.push(props.user.email)
 
         const updateFollowers = props.user.followers
-        updateFollowers.push(user.username)
+        updateFollowers.push(user.email)
 
         // Update User's friends
         const response = await fetch('/api/user/' + user._id, {
@@ -47,7 +47,7 @@ const Followers = (props) => {
 
     return (
         <div className="user-details">
-            {((props.user.username !== user.username) && !(user.friends.includes(props.user.username)) && (user.followers.includes(props.user.username))) ? (
+            {((props.user.email !== user.email) && !(user.friends.includes(props.user.email)) && (user.followers.includes(props.user.email))) ? (
                 <div>
                     <div className="user-container">
                         <div className='user-image-container'>
