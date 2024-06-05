@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { Link, useNavigate } from 'react-router-dom';
 import EditUsername from "./EditUsername";
+import {toast} from 'react-toastify';
 import "./styles/HomePage.css";
 
 const Profile = () => {
@@ -35,6 +36,7 @@ const Profile = () => {
                 console.log('Here')
                 dispatch({ type: 'UPDATE', payload: json3 });
                 localStorage.setItem('user', JSON.stringify(json3));
+                toast.success("Profile Picture Updated")
             }
         }
     };
