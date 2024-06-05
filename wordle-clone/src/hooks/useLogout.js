@@ -15,7 +15,9 @@ export const useLogout = () => {
         dispatch({type: 'LOGOUT'})
         toast.success("Succesfully logged out")
         // workoutsDispatch({type: 'SET_WORKOUTS', payload: null})
-
+        setTimeout(() => {
+            window.location.reload()
+        }, 1000)
     }
 
     return {logout}

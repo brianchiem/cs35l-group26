@@ -232,6 +232,7 @@
     pointer-events: all;
     cursor: pointer;
     border-style: solid;
+    border-color: green;
     transition: all 0.15s;
 }
 .log_out:hover {
