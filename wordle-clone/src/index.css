@@ -297,6 +297,7 @@ input.error {
   background-color: green;
   border-radius: 20px;
   color: white;
+  border-color: green;
   border-style: solid;
   border-width: 2px;
   padding: 8px 15px;
