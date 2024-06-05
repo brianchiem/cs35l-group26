@@ -379,6 +379,7 @@ input.error {
 .user-container2 h4, p {
   padding: 0px;
   margin: 0px;
+  white-space: nowrap;
 }
 .user-container2 p {
   font-size: 18px;
@@ -398,7 +399,7 @@ input.error {
   cursor: pointer;
 }
 .user-info-container2 {
-  width: 150px;
+  width: auto;
 }
 .you {
   width: 370px;
