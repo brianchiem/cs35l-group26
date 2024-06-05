@@ -1,17 +1,19 @@
 import { useState, useEffect } from "react";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { Link, useNavigate } from 'react-router-dom';
+import EditUsername from "./EditUsername";
 import "./styles/HomePage.css";
 
 const Profile = () => {
     const { user, dispatch } = useAuthContext();
     const [file, setFile] = useState(null);
     const navigate = useNavigate();
+    const [trigger, setTrigger] = useState(false)
 
     const upload = async () => {
         const formData = new FormData();
         formData.append('file', file);
-        const response = await fetch('/api/upload', {
+        const response = await fetch('/api/upload/', {
             method: 'POST',
             body: formData
         });
@@ -20,52 +22,63 @@ const Profile = () => {
             const response2 = await fetch('/api/user/' + user._id, {
                 method: 'PATCH',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ profilepicture: json.filename })
+                body: JSON.stringify({ profilepicture: (json.public_id + "." + json.format) })
             });
             const json2 = await response2.json();
+            
+            const response3 = await fetch('/api/user/' + user._id, {
+                method: 'GET'
+            })
+            const json3 = await response3.json()
 
-            if (response2.ok) {
-                dispatch({ type: 'UPDATE', payload: json2 });
-                localStorage.setItem('user', JSON.stringify(json2));
+            if (response3) {
+                console.log('Here')
+                dispatch({ type: 'UPDATE', payload: json3 });
+                localStorage.setItem('user', JSON.stringify(json3));
             }
         }
     };
 
     const navigateToEditUsername = () => {
-        navigate('/edit-username');
+        // navigate('/edit-username');
+        setTrigger(!trigger)
     };
 
-    useEffect(() => {
-        const fetchUser = async () => {
-            const storedUser = JSON.parse(localStorage.getItem('user'));
-            if (storedUser && storedUser._id) {
-                const response = await fetch('/api/user/' + storedUser._id);
-                const json = await response.json();
-                if (response.ok) {
-                    dispatch({ type: 'UPDATE', payload: json });
-                }
-            }
-        };
-        fetchUser();
-    }, [dispatch]);
+    // useEffect(() => {
+    //     const fetchUser = async () => {
+    //         const storedUser = JSON.parse(localStorage.getItem('user'));
+    //         if (storedUser && storedUser._id) {
+    //             const response = await fetch('/api/user/' + storedUser._id);
+    //             const json = await response.json();
+    //             if (response.ok) {
+    //                 dispatch({ type: 'UPDATE', payload: json });
+    //             }
+    //         }
+    //     };
+    //     fetchUser();
+    // }, [dispatch]);
 
     return (
-        <div className="profile-container">
-            <div className="image-column">
-                <img className="pfp" src={!user.profilepicture ? 'http://localhost:4000/images/defaultpfp.png' : 'http://localhost:4000/images/' + user.profilepicture} alt="Profile" />
-                <input type="file" onChange={(e) => setFile(e.target.files[0])} />
-                <button className="upload" type="button" onClick={upload}>Upload</button>
-            </div>
-            <div className="profile-details">
-                <div className="profile-username">{user.username}</div>
-                <button className="edit-username" type="button" onClick={navigateToEditUsername}>Edit Username</button>
-                <p>Your current streak: {user.streak}</p>
-                <div className='helpin-profile'>
-                    <span className="material-symbols-outlined">help</span>
-                    <Link className='LinkFont' to='/How-to-Play'>Help</Link>
+        <div>
+            <div className="profile-container">
+                <div className="image-column">
+                    <img className="pfp" src={"https://res.cloudinary.com/dtbf4bkhl/image/upload/v1717560991/" + user.profilepicture} alt='Profile' />
+                    <input type="file" onChange={(e) => setFile(e.target.files[0])} />
+                    <button className="upload" type="button" onClick={upload}>Upload</button>
+                </div>
+                <div className="profile-details">
+                    <div className="profile-username">{user.username}<span className="material-symbols-outlined" onClick={navigateToEditUsername}>edit</span></div>
+                    <div className="profile-email">{user.email}</div>
+                    <p>Your current streak: {user.streak}</p>
+                    <div className='helpin-profile'>
+                        <span className="material-symbols-outlined">help</span>
+                        <Link className='LinkFont' to='/How-to-Play'>Help</Link>
+                    </div>
                 </div>
             </div>
+            <EditUsername trigger={trigger} setTrigger={setTrigger}/>
         </div>
+       
     );
 };
 

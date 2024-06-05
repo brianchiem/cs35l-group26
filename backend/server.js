@@ -2,18 +2,19 @@ const express = require('express')
 const mongoose = require('mongoose')
 const userRoutes = require('./routes/user')
 const wordRoutes = require('./routes/word')
+const uploadRoutes = require('./routes/upload')
 
-const multer = require('multer')
-const path = require('path')
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, 'public/images/')
-    },
-    filename: function (req, file, cb) {
-        cb(null, file.fieldname + "-" + Date.now() + path.extname(file.originalname))
-    }
-})
-const upload = multer({storage})
+// const multer = require('multer')
+// const path = require('path')
+// const storage = multer.diskStorage({
+//     destination: function (req, file, cb) {
+//         cb(null, 'public/images/')
+//     },
+//     filename: function (req, file, cb) {
+//         cb(null, file.fieldname + "-" + Date.now() + path.extname(file.originalname))
+//     }
+// })
+// const upload = multer({storage})
 
 // express app
 const app = express()
@@ -29,10 +30,10 @@ app.use((req, res, next) => {
 })
 
 // routes
-app.post('/api/upload', upload.single('file'), function(req, res) {
-    res.json(req.file)
-})
-
+// app.post('/api/upload', upload.single('file'), function(req, res) {
+//     res.json(req.file)
+// })
+app.use('/api/upload', uploadRoutes)
 app.use('/api/user', userRoutes)
 app.use('/api/word', wordRoutes)
 

@@ -9,7 +9,7 @@ const Following = (props) => {
             <div>
                     <div className="user-container">
                         <div className='user-image-container'>
-                            <img className="user-pfp" src={!props.user.profilepicture ? 'http://localhost:4000/images/defaultpfp.png' : 'http://localhost:4000/images/' + props.user.profilepicture}/>
+                            <img className="user-pfp" src={"https://res.cloudinary.com/dtbf4bkhl/image/upload/v1717560991/" + props.user.profilepicture}/>
                         </div>
                         <div className='user-info-container'>
                             <h4>{props.user.username}</h4>

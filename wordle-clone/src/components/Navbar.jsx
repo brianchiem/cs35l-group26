@@ -94,7 +94,7 @@ function Navbar() {
                     {user && (
                         <div className="side-bar-container">
                         <Link className="navpfp" to={`/Profile`} >
-                            <img src={!user.profilepicture ? 'http://localhost:4000/images/defaultpfp.png' : 'http://localhost:4000/images/' + user.profilepicture}/>
+                            <img src={"https://res.cloudinary.com/dtbf4bkhl/image/upload/v1717560991/" + user.profilepicture}/>
                             <div className="font-final1" >{user.username}</div>
                         </Link>
                         <Link className="dropdown-links" to="/Leaderboards">
