@@ -30,10 +30,30 @@ function App() {
   const [word, setWord] = useState(null)
   const [ystword, setYstWord] = useState(null)
 
+  let today = useDate(),
+  year = today.getFullYear().toString(),
+  month = today.getMonth() + 1,
+  day = today.getDate();
+  if (day < 10) {
+    day = "0" + day.toString()
+  }
+  else {
+    day = day.toString()
+  }
+  if (month < 10) {
+    month = "0" + month.toString() 
+  }
+  else {
+    month = month.toString()
+  }
+  const date = year + month + day
+  console.log(date)
+
   // SETTING THE DATE \\
   // 1. This currently is grabbing the current day in order to grab today's word. Default settings for normal operation
-  const d = useDate()
-  let date = d.toISOString().slice(0,10).replaceAll('-', '')
+  // const d = useDate()
+  // let date = d.toISOString().slice(0,10).replaceAll('-', '')
+  // console.log(d)
 
   // 2. To change the date for testing purposes, see hooks/useDate.js
 
