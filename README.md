@@ -1,7 +1,7 @@
 # cs35l-group26
 
 ### Built with the MERN stack: MongoDB, Express.js, React, Node.js
-Images are being hosted with "Cloudinary"
+Images are being hosted with **Cloudinary**
 
 ## How to run the App
 
@@ -33,6 +33,8 @@ npm install express
 npm install mongoose validator bcrypt jsonwebtoken multer cloudinary
 ```
 
+# Running the Application 
+
 ### Running Front-end Server
 
 Verify you are in the project directory `wordle-clone`. Run:
@@ -41,18 +43,18 @@ Verify you are in the project directory `wordle-clone`. Run:
 npm run dev
 ```
 
-This will give you a link to a locally hosted server you can access from your browser.
+This will give you a link to a locally hosted server on `http://localhost:####` you can access from your browser.
 
 ### Back-end
 
-Verify you are in the `backend`. Run:
+In a different terminal, verify you are in the `backend` directory. Run:
 
 ```shell
 npm run dev
 ```
 
 ## Notes
-The backend database is hosted on MongoDB. Currently just for this project, it is still connected within this code. Will replace with environment variables later.
+The backend database is hosted on MongoDB, and images are on Cloudinary. Currently just for this project, the "secret stuff" is still connected within this code for ease of use. Will replace with environment variables later.
 
 
 
