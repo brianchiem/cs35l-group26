@@ -12,6 +12,7 @@ slsww   Yinwei Sun
 
 em568  Emilia Yuja Matute
 
+tam-agotchi Tam Nguyen
 
 ## How to run the App
 
@@ -38,6 +39,7 @@ Next, let's setup the back-end
 `cd` into `backend` and install requirements:
 
 ```shell
+cd ..
 cd backend
 npm install express
 npm install mongoose validator bcrypt jsonwebtoken multer cloudinary
