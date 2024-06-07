@@ -5,8 +5,11 @@ Images are being hosted with **Cloudinary**
 
 ## Mapping between members and commits
 Username  Student Name
+
 brianchiem  Brian Chiem 
+
 slsww   Yinwei Sun
+
 em568  Emilia Yuja Matute
 
 
