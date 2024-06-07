@@ -3,6 +3,13 @@
 ### Built with the MERN stack: MongoDB, Express.js, React, Node.js
 Images are being hosted with **Cloudinary**
 
+## Mapping between members and commits
+Username  Student Name
+brianchiem  Brian Chiem 
+slsww   Yinwei Sun
+em568  Emilia Yuja Matute
+
+
 ## How to run the App
 
 ### Get code
