@@ -5,7 +5,7 @@ const Followers = (props) => {
     const {user} = useAuthContext()
     const {dispatch} = useAuthContext()
 
-    const handleClick = async() => {
+    const handleFollow = async() => {
         const updateFriends = user.friends
         updateFriends.push(props.user.email)
 
@@ -59,7 +59,7 @@ const Followers = (props) => {
                             <p>Current Streak: {props.user.streak}</p>
                         </div>
                         <div className="user-follow-container">
-                            <span onClick={handleClick}>Follow</span>
+                            <span onClick={handleFollow}>Follow</span>
                         </div>
                     </div>
                 </div>
