@@ -33,7 +33,7 @@ const Profile = () => {
             const json3 = await response3.json()
 
             if (response3) {
-                console.log('Here')
+                // console.log('Here')
                 dispatch({ type: 'UPDATE', payload: json3 });
                 localStorage.setItem('user', JSON.stringify(json3));
                 toast.success("Profile Picture Updated")

@@ -35,10 +35,10 @@ const Users = (props) => {
         const json1 = await response1.json()
 
         if (response) {
-            console.log('here')
-            console.log(json)
-            console.log(json1)
-            console.log(json2)
+            // console.log('here')
+            // console.log(json)
+            // console.log(json1)
+            // console.log(json2)
             dispatch({type: 'UPDATE', payload: json1})
             localStorage.setItem('user', JSON.stringify(json1))
         }

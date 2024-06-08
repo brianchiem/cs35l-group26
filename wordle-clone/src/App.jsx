@@ -47,7 +47,7 @@ function App() {
     month = month.toString()
   }
   const date = year + month + day
-  console.log(date)
+  // console.log(date)
 
   // SETTING THE DATE \\
   // 1. This currently is grabbing the current day in order to grab today's word. Default settings for normal operation
@@ -66,8 +66,8 @@ function App() {
         if (response.ok) {
           setWord(json.word)
           setYstWord(json.ystword)
-          console.log("Today's Word: ", json.word)
-          console.log("Yesterday's Word: ", json.ystword)
+          // console.log("Today's Word: ", json.word)
+          // console.log("Yesterday's Word: ", json.ystword)
         }
     }
 

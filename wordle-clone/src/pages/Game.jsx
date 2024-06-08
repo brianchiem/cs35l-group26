@@ -4,11 +4,11 @@ import Logic from "./game-components/Logic"
 import Popup from "./game-components/Popup"
 import Emojis from "./game-components/Emoji/Emojis"
 import { useAuthContext } from "../hooks/useAuthContext"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 function Game(props) {
     const {user} = useAuthContext()
-    const {turn, currGuess, guesses, gameOver, win, lose, keyboardState, setWin, handleInput, setLose} = Logic(props.solution, props.ystword)
+    const {turn, currGuess, guesses, gameOver, win, lose, keyboardState, setWin, handleInput, setLose, setTurn, setGuesses, setLog, setGameOver, setKeyboardState} = Logic(props.solution, props.ystword)
     const [popup, setPopup] = useState(true)
     let type = ''
     //console.log(turn, currGuess, guesses, gameOver)
@@ -17,6 +17,22 @@ function Game(props) {
     if (memory) {
         type = memory.type
     }
+
+    useEffect(() => {
+        if (localStorage.getItem('localstate')) {
+            const localstate = JSON.parse(localStorage.getItem('localstate'))
+    
+            setTurn(localstate.turn + 1)
+            // setCurrGuess(localstate.currGuess)
+            setGuesses(localstate.guesses)
+            setLog(localstate.log)
+            setGameOver(localstate.gameOver)
+            setWin(localstate.win)
+            setLose(localstate.lose)
+            setKeyboardState(localstate.keyboardState)
+            console.log("successfully restored localstate")
+        }
+    }, [])
 
     if (user.words.includes(props.solution)) {
         return (

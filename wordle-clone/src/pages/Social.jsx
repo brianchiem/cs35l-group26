@@ -34,7 +34,7 @@ function Social(props) {
 
     const handleSubmit = async() => {
         //e.preventDefault()
-        console.log(searching)
+        // console.log(searching)
 
         const json = await search(searching)
 

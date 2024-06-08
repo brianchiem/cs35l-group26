@@ -30,6 +30,8 @@ const defaultKeyboard = [
     {key: 'M', color: 'none'}, // index 25
 ]
 
+
+
 function Logic(solution, ystword) {
     const [turn, setTurn] = useState(0)
     const [currGuess, setCurrGuess] = useState("")
@@ -44,7 +46,6 @@ function Logic(solution, ystword) {
     const {dispatch} = useAuthContext()
     const {_id, streak} = user
     //const _id = user._id
-    
 
     const handleWin = async() => {
         const winArray = user.words
@@ -70,12 +71,14 @@ function Logic(solution, ystword) {
         const json1 = await response1.json()
 
         if (response) {
-            console.log('here')
-            console.log(json)
-            console.log(json1)
+            // console.log('here')
+            // console.log(json)
+            // console.log(json1)
             dispatch({type: 'UPDATE', payload: json1})
             localStorage.setItem('user', JSON.stringify(json1))
             localStorage.setItem('win', JSON.stringify({guesses: guesses, keyboardState: keyboardState, type: 'win'}))
+            localStorage.removeItem('localstate')
+            console.log('successfully removed localstate')
         }
     }
 
@@ -97,12 +100,14 @@ function Logic(solution, ystword) {
         const json1 = await response1.json()
 
         if (response) {
-            console.log('here')
-            console.log(json)
-            console.log(json1)
+            // console.log('here')
+            // console.log(json)
+            // console.log(json1)
             dispatch({type: 'UPDATE', payload: json1})
             localStorage.setItem('user', JSON.stringify(json1))
             localStorage.setItem('win', JSON.stringify({guesses: guesses, keyboardState: keyboardState, type: 'lost'}))
+            localStorage.removeItem('localstate')
+            console.log('successfully removed localstate')
         }
     }
 
@@ -138,6 +143,8 @@ function Logic(solution, ystword) {
             setLose(true)
             handleLose()
         }
+        localStorage.setItem('localstate', JSON.stringify({turn: turn, currGuess: currGuess, guesses: guesses, log: log, gameOver: gameOver, win: win, lose: lose, keyboardState: keyboardState}))
+        console.log('successfully stored localstate')
     }
 
     function updateKeyboardState(guess) {
@@ -190,7 +197,7 @@ function Logic(solution, ystword) {
         }
     }
 
-    return {turn, currGuess, guesses, gameOver, win, lose, keyboardState, handleInput, setWin, setLose}
+    return {turn, currGuess, guesses, gameOver, win, lose, keyboardState, handleInput, setWin, setLose, setKeyboardState, setGameOver, setLog, setGuesses, setCurrGuess, setTurn}
 }
 
 export default Logic

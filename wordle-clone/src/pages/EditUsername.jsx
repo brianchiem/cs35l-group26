@@ -23,7 +23,7 @@ const EditUsername = (props) => {
             body: JSON.stringify({ username: newUsername })
         });
         const json = await response.json();
-        console.log("Old User State: ", json)
+        // console.log("Old User State: ", json)
         if (response.ok) {
             const response2 = await fetch('/api/user/' + user._id, {
                 method: 'GET'
