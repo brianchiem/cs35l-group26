@@ -12,7 +12,7 @@ const Followers = (props) => {
         const updateFollowers = props.user.followers
         updateFollowers.push(user.email)
 
-        // Update User's friends
+        // update user's friends
         const response = await fetch('/api/user/' + user._id, {
             method: 'PATCH',
             headers: {'Content-Type': 'application/json'},
@@ -20,7 +20,7 @@ const Followers = (props) => {
         })
         const json = await response.json()
         
-        // Update the person they followed
+        // update the person they followed
         const response2 = await fetch('/api/user/' + props.user._id, {
             method: 'PATCH',
             headers: {'Content-Type': 'application/json'},
