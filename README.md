@@ -14,15 +14,17 @@ em568  Emilia Yuja Matute
 
 tam-agotchi Tam Nguyen
 
+Note: Nathan has dropped the class
+
 ## How to run the App
 
 ### Get code
 
-Clone repository. You can do this easily through Github Desktop.
+Clone repository.
 
 First, let's setup the front-end:
 
-`cd` into `wordle-clone` and install requirements (npm needs to be installed)
+`cd` into `wordle-clone` and install requirements (Node.js needs to be installed)
 
 You will also need to install some packages that are used in our webstite
 
