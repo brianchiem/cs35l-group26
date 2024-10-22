@@ -14,20 +14,20 @@ const Profile = () => {
     const upload = async () => {
         const formData = new FormData();
         formData.append('file', file);
-        const response = await fetch('/https://cs35l-group26.onrender.com/upload/', {
+        const response = await fetch('/api/upload/', {
             method: 'POST',
             body: formData
         });
         const json = await response.json();
         if (response.ok) {
-            const response2 = await fetch('/https://cs35l-group26.onrender.com/user/' + user._id, {
+            const response2 = await fetch('/api/user/' + user._id, {
                 method: 'PATCH',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ profilepicture: (json.public_id + "." + json.format) })
             });
             const json2 = await response2.json();
             
-            const response3 = await fetch('/https://cs35l-group26.onrender.com/user/' + user._id, {
+            const response3 = await fetch('/api/user/' + user._id, {
                 method: 'GET'
             })
             const json3 = await response3.json()

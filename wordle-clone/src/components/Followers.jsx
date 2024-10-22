@@ -13,7 +13,7 @@ const Followers = (props) => {
         updateFollowers.push(user.email)
 
         // update user's friends
-        const response = await fetch('/https://cs35l-group26.onrender.com/user/' + user._id, {
+        const response = await fetch('/api/user/' + user._id, {
             method: 'PATCH',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({friends: updateFriends})
@@ -21,14 +21,14 @@ const Followers = (props) => {
         const json = await response.json()
         
         // update the person they followed
-        const response2 = await fetch('/https://cs35l-group26.onrender.com/user/' + props.user._id, {
+        const response2 = await fetch('/api/user/' + props.user._id, {
             method: 'PATCH',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({followers: updateFollowers})
         })
         const json2 = await response2.json()
 
-        const response1 = await fetch('/https://cs35l-group26.onrender.com/user/' + user._id, {
+        const response1 = await fetch('/api/user/' + user._id, {
             method: 'GET'
         })
 
