@@ -18,7 +18,7 @@ function Social(props) {
     // const friends = user.friends
     useEffect(() => {
         const fetchUsers = async () => {
-            const response = await fetch('/api/user')
+            const response = await fetch('https://cs35l-group26.onrender.com/user')
             const json = await response.json()
 
             if (response.ok) {
