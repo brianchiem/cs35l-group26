@@ -57,14 +57,14 @@ function Logic(solution, ystword) {
         else {
             updateStreak = 1
         }
-        const response = await fetch('https://cs35l-group26.onrender.com/user/' + _id, {
+        const response = await fetch('/api/user/' + _id, {
             method: 'PATCH',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({words: winArray, streak: updateStreak})
         })
         const json = await response.json()
 
-        const response1 = await fetch('https://cs35l-group26.onrender.com/user/' + _id, {
+        const response1 = await fetch('/api/user/' + _id, {
             method: 'GET'
         })
 
@@ -86,14 +86,14 @@ function Logic(solution, ystword) {
         const loseArray = user.miss
         loseArray.push(solution)
         
-        const response = await fetch('https://cs35l-group26.onrender.com/user/' + _id, {
+        const response = await fetch('/api/user/' + _id, {
             method: 'PATCH',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({miss: loseArray})
         })
         const json = await response.json()
 
-        const response1 = await fetch('https://cs35l-group26.onrender.com/user/' + _id, {
+        const response1 = await fetch('/api/user/' + _id, {
             method: 'GET'
         })
 

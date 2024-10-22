@@ -10,7 +10,7 @@ const Friends = (props) => {
         const updateFollowers = props.user.followers.filter(email => email !== user.email)
 
         // update user's friends
-        const response = await fetch('https://cs35l-group26.onrender.com/user/' + user._id, {
+        const response = await fetch('/api/user/' + user._id, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({friends: updateFriends})
@@ -18,7 +18,7 @@ const Friends = (props) => {
         const json = await response.json()
 
         // update the unfollowed user's followers
-        const response2 = await fetch ('https://cs35l-group26.onrender.com/user/' + props.user._id, {
+        const response2 = await fetch ('/api/user/' + props.user._id, {
             method: 'PATCH',
             headers: {'Content-Type': 'application/json' },
             body: JSON.stringify({followers: updateFollowers})
@@ -26,7 +26,7 @@ const Friends = (props) => {
         const json2 = await response2.json();
 
         // fetch updated current user data
-        const response1 = await fetch('https://cs35l-group26.onrender.com/user/' + user._id, {
+        const response1 = await fetch('/api/user/' + user._id, {
             method: 'GET'
         })
 
