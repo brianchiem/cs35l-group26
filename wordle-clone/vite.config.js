@@ -8,7 +8,7 @@ export default defineConfig({
     proxy: {
       '/foo': 'http://localhost:4567',
       '/api': {
-        target: 'https://cs35l-group26.onrender.com',
+        target: 'http://localhost:4000',
         changeOrigin: true,
         secure: false,
       },
