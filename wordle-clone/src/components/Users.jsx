@@ -1,6 +1,5 @@
 import { useAuthContext } from "../hooks/useAuthContext"
 import pfp from '../uploads/defaultpfp.png'
-const rootUrl = process.env.NODE_ENV === "production" ? "https://cs35l-group26.onrender.com/api" : "api"
 
 const Users = (props) => {
     const {user} = useAuthContext()
@@ -14,7 +13,7 @@ const Users = (props) => {
         updateFollowers.push(user.email)
 
         // update User's friends
-        const response = await fetch(`${rootUrl}/user/` + user._id, {
+        const response = await fetch('/api/user/' + user._id, {
             method: 'PATCH',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({friends: updateFriends})
@@ -22,14 +21,14 @@ const Users = (props) => {
         const json = await response.json()
         
         // update the person they followed
-        const response2 = await fetch(`${rootUrl}/user/` + props.user._id, {
+        const response2 = await fetch('/api/user/' + props.user._id, {
             method: 'PATCH',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({followers: updateFollowers})
         })
         const json2 = await response2.json()
 
-        const response1 = await fetch(`${rootUrl}/user/` + user._id, {
+        const response1 = await fetch('/api/user/' + user._id, {
             method: 'GET'
         })
 

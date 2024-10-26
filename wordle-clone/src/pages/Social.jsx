@@ -6,7 +6,6 @@ import Users from "../components/Users"
 import Followers from "../components/Followers"
 import Friends from "../components/Friends"
 import {useSearch} from '../hooks/useSearch'
-const rootUrl = process.env.NODE_ENV === "production" ? "https://cs35l-group26.onrender.com/api" : "api"
 
 function Social(props) {
     const {user} = useAuthContext()
@@ -19,7 +18,7 @@ function Social(props) {
     // const friends = user.friends
     useEffect(() => {
         const fetchUsers = async () => {
-            const response = await fetch(`${rootUrl}/user`)
+            const response = await fetch('/api/user')
             const json = await response.json()
 
             if (response.ok) {
