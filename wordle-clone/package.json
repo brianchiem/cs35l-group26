@@ -1,5 +1,4 @@
 {
-  "proxy": "https://cs35l-group26.onrender.com",
   "name": "wordle-clone",
   "private": true,
   "version": "0.0.0",
