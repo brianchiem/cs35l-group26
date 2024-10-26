@@ -23,7 +23,7 @@ import { createBrowserRouter, createRoutesFromElements, RouterProvider, Routes, 
 import { useAuthContext } from './hooks/useAuthContext.js'
 import useDate from './hooks/useDate.js';
 
-const rootUrl = process.env.NODE_ENV === "production" ? "https://cs35l-group26-1.onrender.com/api" : "api"
+const rootUrl = process.env.NODE_ENV === "production" ? "https://cs35l-group26.onrender.com/api" : "api"
 
 function App() {
 
@@ -61,7 +61,7 @@ function App() {
 
   useEffect(() => {
     const fetchWord = async () => {
-        const response = await fetch(`${rootUrl}/word/` + date) 
+        const response = await fetch("https://cs35l-group26.onrender.com/api/word/" + "20241021") 
         const json = await response.json()
 
         if (response.ok) {
