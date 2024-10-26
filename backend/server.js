@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const userRoutes = require('./routes/user')
 const wordRoutes = require('./routes/word')
 const uploadRoutes = require('./routes/upload')
+const cors = require('cors')
 
 // const multer = require('multer')
 // const path = require('path')
@@ -18,6 +19,10 @@ const uploadRoutes = require('./routes/upload')
 
 // express app
 const app = express()
+
+app.use(cors({
+    origin: "https://cs35l-group26-1.onrender.com"
+}))
 
 // middleware
 app.use(express.json())

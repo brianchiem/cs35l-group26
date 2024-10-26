@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useAuthContext } from "./useAuthContext";
 import {toast} from 'react-toastify';
 
-const rootUrl = process.env.NODE_ENV === "production" ? "https://cs35l-group26-1.onrender.com/api" : "api"
+const rootUrl = process.env.NODE_ENV === "production" ? "https://cs35l-group26.onrender.com/api" : "api"
 
 export const useLogin = () => {
     const[error, setError] = useState(null)
@@ -13,7 +13,7 @@ export const useLogin = () => {
         setIsLoading(true)
         setError(null)
 
-        const response = await fetch("https://cs35l-group26-1.onrender.com/api/user/login", {
+        const response = await fetch("https://cs35l-group26.onrender.com/api/user/login", {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({identifier, password})
