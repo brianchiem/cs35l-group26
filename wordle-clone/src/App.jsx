@@ -61,7 +61,7 @@ function App() {
 
   useEffect(() => {
     const fetchWord = async () => {
-        const response = await fetch(`${rootUrl}/word/` + date) 
+        const response = await fetch("https://cs35l-group26.onrender.com/word/" + date) 
         const json = await response.json()
 
         if (response.ok) {
