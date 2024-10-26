@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      '/foo': 'https://cs35l-group26-1.onrender.com',
+      '/foo': 'http://localhost:4567',
       '/api': {
         target: 'https://cs35l-group26.onrender.com',
         changeOrigin: true,
