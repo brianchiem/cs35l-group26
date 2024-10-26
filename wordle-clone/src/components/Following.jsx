@@ -1,5 +1,6 @@
 import { useAuthContext } from "../hooks/useAuthContext"
 import pfp from '../uploads/defaultpfp.png'
+const rootUrl = process.env.NODE_ENV === "production" ? "https://cs35l-group26.onrender.com/api" : "api"
 
 const Following = (props) => {
     const {user} = useAuthContext()
@@ -10,7 +11,7 @@ const Following = (props) => {
         const updateFollowers = props.user.followers.filter(email => email !== user.email)
 
         // update user's friends
-        const response = await fetch('/api/user/' + user._id, {
+        const response = await fetch(`${rootUrl}/user/` + user._id, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({friends: updateFriends})
@@ -18,7 +19,7 @@ const Following = (props) => {
         const json = await response.json()
 
         // update the unfollowed user's followers
-        const response2 = await fetch ('/api/user/' + props.user._id, {
+        const response2 = await fetch (`${rootUrl}/user/` + props.user._id, {
             method: 'PATCH',
             headers: {'Content-Type': 'application/json' },
             body: JSON.stringify({followers: updateFollowers})
@@ -26,7 +27,7 @@ const Following = (props) => {
         const json2 = await response2.json();
 
         // fetch updated current user data
-        const response1 = await fetch('/api/user/' + user._id, {
+        const response1 = await fetch(`${rootUrl}/user/` + user._id, {
             method: 'GET'
         })
 

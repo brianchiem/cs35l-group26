@@ -2,7 +2,7 @@ import "./styles/Leaderboards.css"
 import {useAuthContext} from '../hooks/useAuthContext.js'
 import { useState, useEffect } from "react"
 import LeaderboardEntry from "../components/LeaderboardEntry.jsx"
-
+const rootUrl = process.env.NODE_ENV === "production" ? "https://cs35l-group26.onrender.com/api" : "api"
 
 function Leaderboards() {
     const {user} = useAuthContext()
@@ -10,7 +10,7 @@ function Leaderboards() {
 
     useEffect(() => {
         const fetchUsers = async () => {
-            const response = await fetch('/api/user/2')
+            const response = await fetch(`${rootUrl}/user/2`)
             const json = await response.json()
 
             if (response.ok) {

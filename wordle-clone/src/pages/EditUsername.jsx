@@ -3,6 +3,7 @@ import { useAuthContext } from "../hooks/useAuthContext";
 import { useNavigate } from 'react-router-dom';
 import { toast } from "react-toastify";
 import "./styles/EditUsername.css";
+const rootUrl = process.env.NODE_ENV === "production" ? "https://cs35l-group26.onrender.com/api" : "api"
 
 const EditUsername = (props) => {
     const { user, dispatch } = useAuthContext();
@@ -17,7 +18,7 @@ const EditUsername = (props) => {
     }
 
     const updateUsername = async () => {
-        const response = await fetch('/api/user/' + user._id, {
+        const response = await fetch(`${rootUrl}/user/` + user._id, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ username: newUsername })
@@ -25,7 +26,7 @@ const EditUsername = (props) => {
         const json = await response.json();
         // console.log("Old User State: ", json)
         if (response.ok) {
-            const response2 = await fetch('/api/user/' + user._id, {
+            const response2 = await fetch(`${rootUrl}/user/` + user._id, {
                 method: 'GET'
             })
             const updatedUser = await response2.json()
