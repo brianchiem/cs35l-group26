@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useAuthContext } from "./useAuthContext";
 import {toast} from 'react-toastify';
 
-const rootUrl = process.env.NODE_ENV === "production" ? "https://cs35l-group26-1.onrender.com" : "api"
+const rootUrl = process.env.NODE_ENV === "production" ? "https://cs35l-group26-1.onrender.com/api" : "api"
 
 export const useLogin = () => {
     const[error, setError] = useState(null)
