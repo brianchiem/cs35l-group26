@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useAuthContext } from "../../hooks/useAuthContext";
+const rootUrl = process.env.NODE_ENV === "production" ? "https://cs35l-group26.onrender.com/api" : "api"
 
 const defaultKeyboard = [
     {key: 'Q', color: 'none'}, // index 0:
@@ -57,14 +58,14 @@ function Logic(solution, ystword) {
         else {
             updateStreak = 1
         }
-        const response = await fetch('/api/user/' + _id, {
+        const response = await fetch(`${rootUrl}/user/` + _id, {
             method: 'PATCH',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({words: winArray, streak: updateStreak})
         })
         const json = await response.json()
 
-        const response1 = await fetch('/api/user/' + _id, {
+        const response1 = await fetch(`${rootUrl}/user/` + _id, {
             method: 'GET'
         })
 
@@ -86,14 +87,14 @@ function Logic(solution, ystword) {
         const loseArray = user.miss
         loseArray.push(solution)
         
-        const response = await fetch('/api/user/' + _id, {
+        const response = await fetch(`${rootUrl}/user/` + _id, {
             method: 'PATCH',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({miss: loseArray})
         })
         const json = await response.json()
 
-        const response1 = await fetch('/api/user/' + _id, {
+        const response1 = await fetch(`${rootUrl}/user/` + _id, {
             method: 'GET'
         })
 
