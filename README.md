@@ -14,7 +14,10 @@ em568  Emilia Yuja Matute
 
 tam-agotchi Tam Nguyen
 
-Note: Nathan has dropped the class
+## Render
+App is now available online, hosted on Render.
+
+https://cs35l-group26-1.onrender.com
 
 ## How to run the App
 
