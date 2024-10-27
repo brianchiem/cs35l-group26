@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useAuthContext } from "./useAuthContext";
 import {toast} from 'react-toastify';
 
+const rootUrl = process.env.NODE_ENV === "production" ? "https://cs35l-group26.onrender.com/api" : "api"
+
 export const useSignup = () => {
     const [error, setError] = useState(null)
     const [isLoading, setIsLoading] = useState(null)
@@ -11,7 +13,7 @@ export const useSignup = () => {
         setIsLoading(true)
         setError(null)
         
-        const response = await fetch('/api/user/signup', {
+        const response = await fetch(`${rootUrl}/user/signup`, {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({email, password, username})
