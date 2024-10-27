@@ -15,7 +15,7 @@ em568  Emilia Yuja Matute
 tam-agotchi Tam Nguyen
 
 ## Render
-App is now available online, hosted on Render.
+App is now available online, hosted on Render. Due to the nature of the free plan, a login/signup attempt may take a few seconds as Render sleeps after some inactivity.
 
 https://cs35l-group26-1.onrender.com
 
