@@ -61,7 +61,7 @@ function App() {
 
   useEffect(() => {
     const fetchWord = async () => {
-        const response = await fetch(`${rootUrl}/word/` + "20241021") 
+        const response = await fetch(`${rootUrl}/word/` + date) 
         const json = await response.json()
 
         if (response.ok) {
