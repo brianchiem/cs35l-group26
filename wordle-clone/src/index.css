@@ -444,3 +444,9 @@ input.error {
   background-color: white;
 }
 
+.render {
+  margin-top: 8px;
+  color: rgb(192, 192, 192)
+  ;
+}
+

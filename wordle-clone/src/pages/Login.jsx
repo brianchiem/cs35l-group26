@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useLogin } from "../hooks/useLogin";
 
+const renderTrue = process.env.NODE_ENV === "production" ? true : false
+
 const Login = () => {
     const [identifier, setIdentifier] = useState('')
     const [password, setPassword] = useState('')
@@ -30,6 +32,7 @@ const Login = () => {
             />
             <button disabled={isLoading}>Log in</button>
             {error && <div className="error">{error}</div>}
+            {renderTrue && <div className="render">Due to the nature of Render, please allow up to 50s for an initial response.</div>}
         </form>
     )
 }
